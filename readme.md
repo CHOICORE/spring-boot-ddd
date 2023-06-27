@@ -3,42 +3,38 @@
 
 
 
-## Type of Folders
+## Type of Packages
 
 
 ### Behavioural Folders:
 
-* Controller
-
-* Gateway
-
 * UseCase
+* Port
 
 ### Package structure
-* Boundary
+* Application
+* Common
 * Domain
-* Factories
 * Infrastructure
+* Interfaces
 
+
+### Package structure tree
 ```
 ├── spring-boot-ddd
-│   ├── V1
-│   │   ├── Boundary
-│   │   │   └── ..
-│   │   ├── Controllers
-│   │   │   └── ..
-│   │   ├── Domain
-│   │   │   └── ..
-│   │   ├── Factories
-│   │   │   └── ..
-│   │   ├── Gateways
-│   │   │   └── ..
-│   │   ├── Infrastructure
-│   │   │   └── ..
-│   │   └── UseCase
-│   │       └── ..
-│   └── ..
-├── BaseApi.Tests
-│   └── ..
-└── ..
+│   │
+│   ├── application
+│   │   └── ..
+│   ├── common
+│   │   └── ..
+│   ├── domain
+│   │   └── ..
+│   ├── infrastructure
+│   │   └── ..
+│   └── interfaces
+│       └── ..
+│   
+└── Tests 
+    └── ..
 ```
+

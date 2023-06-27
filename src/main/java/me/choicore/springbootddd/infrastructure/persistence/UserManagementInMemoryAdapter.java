@@ -1,6 +1,6 @@
 package me.choicore.springbootddd.infrastructure.persistence;
 
-import me.choicore.springbootddd.domain.model.CreateUser;
+import me.choicore.springbootddd.domain.model.CreateUserProfile;
 import me.choicore.springbootddd.domain.model.UserProfile;
 import me.choicore.springbootddd.domain.ports.out.CreateUserPort;
 import me.choicore.springbootddd.domain.ports.out.DeleteUserPort;
@@ -10,19 +10,16 @@ import me.choicore.springbootddd.infrastructure.persistence.mappers.UserMapper;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManagementInMemoryAdapter implements
-        UserProfilePort
-        , CreateUserPort
+        CreateUserPort
+        , UserProfilePort
         , ModifyUserPort
         , DeleteUserPort {
-
     private final Map<Long, UserEntity> store = new ConcurrentHashMap<>();
-
     private final UserMapper userMapper = new UserMapper();
-
 
     @Override
     public UserProfile findById(Long userId) {
@@ -31,10 +28,8 @@ public class UserManagementInMemoryAdapter implements
 
         Objects.requireNonNull(userEntity);
 
-
         return null;
     }
-
 
     @Override
     public UserProfile findBy(UserProfile user) {
@@ -42,20 +37,23 @@ public class UserManagementInMemoryAdapter implements
     }
 
     @Override
-    public Optional<CreateUser> createBy(CreateUser user) {
+    public UserProfile createBy(CreateUserProfile user) {
 
-        if (existsByUsername(user.getUsername())) {
+        if (existsByUsername(user.username())) {
             throw new IllegalStateException("이미 존재하는 사용자입니다.");
         }
-
-
         Long generatedUserId = InMemoryAdapterUtils.generateId(store);
 
-        UserEntity userEntity = userMapper.fromDomain(user);
+        UserEntity userEntity = UserEntity.builder()
+                                          .uuid(UUID.randomUUID())
+                                          .userId(generatedUserId)
+                                          .username(user.username())
+                                          .nickname(user.nickname())
+                                          .build();
 
         store.put(generatedUserId, userEntity);
 
-        return Optional.ofNullable(userMapper.fromEntity(userEntity));
+        return userMapper.fromEntity(userEntity);
     }
 
     @Override
@@ -70,7 +68,6 @@ public class UserManagementInMemoryAdapter implements
     public UserProfile modifyBy(UserProfile user) {
         return null;
     }
-
 
     @Override
     public void deleteBy(UserProfile user) {

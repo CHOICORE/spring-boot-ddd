@@ -6,16 +6,22 @@ import lombok.Getter;
 import java.util.UUID;
 
 
-@Getter
-@Builder
 public class UserProfileResponse {
 
+    @Getter
+    private final UUID id;
 
-    private UUID id;
+    @Getter
+    private final String nickname;
 
-    private String nickname;
+    @Getter
+    private final String username;
 
-    private String username;
 
-
+    @Builder
+    public UserProfileResponse(UUID id, String username, String nickname) {
+        this.id = id;
+        this.username = username;
+        this.nickname = nickname;
+    }
 }

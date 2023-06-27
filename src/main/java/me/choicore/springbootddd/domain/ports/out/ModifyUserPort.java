@@ -4,5 +4,4 @@ import me.choicore.springbootddd.domain.model.UserProfile;
 
 public interface ModifyUserPort {
     UserProfile modifyBy(UserProfile user);
-
 }

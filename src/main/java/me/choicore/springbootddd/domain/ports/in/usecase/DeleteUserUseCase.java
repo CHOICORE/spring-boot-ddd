@@ -6,7 +6,5 @@ import me.choicore.springbootddd.application.annotation.UseCase;
 @UseCase
 public interface DeleteUserUseCase {
 
-    void deleteUser(Long userId);
-
-
+    void deleteById(Long userId);
 }

@@ -7,6 +7,4 @@ public interface UserProfilePort {
     UserProfile findById(Long userId);
 
     UserProfile findBy(UserProfile user);
-
-
 }

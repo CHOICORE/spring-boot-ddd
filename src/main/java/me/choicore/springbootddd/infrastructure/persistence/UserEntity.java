@@ -15,13 +15,7 @@ public class UserEntity {
     private Long userId;
     private String username;
     private String nickname;
-
-
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-
-    protected void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
 }

@@ -1,14 +1,11 @@
 package me.choicore.springbootddd.domain.ports.out;
 
-import me.choicore.springbootddd.domain.model.CreateUser;
-
-import java.util.Optional;
+import me.choicore.springbootddd.domain.model.CreateUserProfile;
+import me.choicore.springbootddd.domain.model.UserProfile;
 
 public interface CreateUserPort {
 
-    Optional<CreateUser> createBy(CreateUser user);
-
-
+    UserProfile createBy(CreateUserProfile user);
 
     boolean existsByUsername(String username);
 }

@@ -14,10 +14,10 @@ import java.util.UUID;
  */
 @Builder
 public record ModifyUserProfile(
-        UUID uuid,
-        Long userId,
-        String username,
-        String nickname
+        UUID uuid
+        , Long userId
+        , String username
+        , String nickname
 ) {
 
     /**
@@ -28,19 +28,18 @@ public record ModifyUserProfile(
      * @param username {@link String}
      * @param nickname {@link String}
      */
+    @Builder
     public ModifyUserProfile {
+        validate();
+    }
+
+    private void validate() {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
         if (userId == null) {
             throw new IllegalArgumentException("userId must not be null");
         }
-        if (username == null || username.isBlank()) {
-            throw new IllegalArgumentException("username must not be null or blank");
-        }
-        if (nickname == null || nickname.isBlank()) {
-            throw new IllegalArgumentException("nickname must not be null or blank");
-        }
-    }
 
+    }
 }

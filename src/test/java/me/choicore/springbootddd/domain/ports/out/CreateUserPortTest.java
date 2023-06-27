@@ -1,5 +1,6 @@
 package me.choicore.springbootddd.domain.ports.out;
 
+import me.choicore.springbootddd.domain.model.BirthDate;
 import me.choicore.springbootddd.domain.model.CreateUserProfile;
 import me.choicore.springbootddd.domain.model.UserProfile;
 import me.choicore.springbootddd.infrastructure.persistence.UserManagementInMemoryAdapter;
@@ -20,15 +21,18 @@ class CreateUserPortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , new BirthDate(1993, 9, 22)
         );
 
         CreateUserProfile duplicateUser = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , new BirthDate(1993, 9, 22)
         );
 
         // then
-        assertThatThrownBy(() -> {
+        assertThatThrownBy(
+                () -> {
                     // when
                     createUserPort.createBy(user);
                     createUserPort.createBy(duplicateUser);
@@ -45,6 +49,7 @@ class CreateUserPortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , new BirthDate(1993, 9, 22)
         );
 
         // when
@@ -65,6 +70,7 @@ class CreateUserPortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , new BirthDate(1993, 9, 22)
         );
 
         createUserPort.createBy(user);

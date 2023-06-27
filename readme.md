@@ -1,25 +1,11 @@
-
-
-
-
-
-## Type of Packages
-
-
-### Behavioural Folders:
-
-* UseCase
-* Port
-
-### Package structure
+### Package Structure
 * Application
 * Common
 * Domain
 * Infrastructure
 * Interfaces
 
-
-### Package structure tree
+### Package Structure tree
 ```
 ├── spring-boot-ddd
 │   │

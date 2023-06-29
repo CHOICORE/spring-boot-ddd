@@ -2,6 +2,7 @@ package me.choicore.springbootddd.domain.model;
 
 import lombok.Builder;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -12,6 +13,7 @@ import java.util.UUID;
  * @param username  {@link String}
  * @param nickname  {@link String}
  * @param birthDate {@link BirthDate}
+ * @param createdAt {@link LocalDateTime}
  */
 
 
@@ -21,16 +23,18 @@ public record UserProfile(
         , String username
         , String nickname
         , BirthDate birthDate
+        , LocalDateTime createdAt
 
 ) {
 
     /**
      * default constructor
      *
-     * @param uuid     {@link UUID}
-     * @param userId   {@link Long}
-     * @param username {@link String}
-     * @param nickname {@link String}
+     * @param uuid      {@link UUID}
+     * @param userId    {@link Long}
+     * @param username  {@link String}
+     * @param nickname  {@link String}
+     * @param birthDate {@link BirthDate}
      */
     @Builder
     public UserProfile {

@@ -36,7 +36,6 @@ public record BirthDate(
      * @param birthDate {@link LocalDate}
      * @return {@link BirthDate}
      */
-
     public static BirthDate of(LocalDate birthDate) {
         return BirthDate.of(
                 birthDate.getYear()

@@ -9,16 +9,15 @@ import java.time.LocalDateTime;
 
 
 public class UserMapper {
+
     public UserProfile fromEntity(UserEntity entity) {
-
-
         return new UserProfile(entity.getUuid()
                 , entity.getUserId()
                 , entity.getUsername()
                 , entity.getNickname()
                 , BirthDate.of(entity.getBirthDate())
+                , entity.getCreatedAt()
         );
-
     }
 
     public UserEntity fromDomain(CreateUserProfile domain) {
@@ -30,6 +29,4 @@ public class UserMapper {
                          .modifiedAt(now)
                          .build();
     }
-
-
 }

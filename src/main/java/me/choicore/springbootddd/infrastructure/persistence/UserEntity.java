@@ -20,4 +20,9 @@ public class UserEntity {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
+
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+        this.modifiedAt = LocalDateTime.now();
+    }
 }

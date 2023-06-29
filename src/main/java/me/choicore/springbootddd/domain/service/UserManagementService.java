@@ -2,6 +2,8 @@ package me.choicore.springbootddd.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import me.choicore.springbootddd.domain.model.CreateUserProfile;
+import me.choicore.springbootddd.domain.model.ModifyUserProfile;
+import me.choicore.springbootddd.domain.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.model.UserProfile;
 import me.choicore.springbootddd.domain.ports.in.usecase.CreateUserUseCase;
 import me.choicore.springbootddd.domain.ports.in.usecase.DeleteUserUseCase;
@@ -12,6 +14,8 @@ import me.choicore.springbootddd.domain.ports.out.DeleteUserPort;
 import me.choicore.springbootddd.domain.ports.out.ModifyUserPort;
 import me.choicore.springbootddd.domain.ports.out.UserProfilePort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -40,16 +44,11 @@ public class UserManagementService implements
 
     @Override
     public UserProfile createBy(CreateUserProfile domain) {
-        if (createUserPort.existsByUsername(domain.username())) {
-            throw new IllegalArgumentException("이미 존재하는 사용자입니다.");
-        }
-
-
         return createUserPort.createBy(domain);
     }
 
     @Override
-    public UserProfile modifyUserProfile(UserProfile user) {
+    public UserProfile modifyUserProfile(ModifyUserProfile user) {
         return modifyUserPort.modifyBy(user);
     }
 
@@ -61,5 +60,10 @@ public class UserManagementService implements
     @Override
     public UserProfile getUserProfile(Long userId) {
         return userProfilePort.findById(userId);
+    }
+
+    @Override
+    public List<UserProfile> getUserProfiles(QueryUserProfile queryUserProfile) {
+        return userProfilePort.findBy(queryUserProfile);
     }
 }

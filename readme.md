@@ -1,4 +1,5 @@
 ### Package Structure
+
 * Application
 * Common
 * Domain
@@ -6,6 +7,7 @@
 * Interfaces
 
 ### Package Structure tree
+
 ```
 ├── spring-boot-ddd
 │   │

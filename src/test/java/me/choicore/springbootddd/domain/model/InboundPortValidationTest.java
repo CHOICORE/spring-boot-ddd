@@ -104,7 +104,7 @@ class InboundPortValidationTest {
         // given & when
         CreateUserProfile admin = new CreateUserProfile(
                 "admin"
-                , ""
+                , "admin"
                 , new BirthDate(1993, 9, 22)
         );
 

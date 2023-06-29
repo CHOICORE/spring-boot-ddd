@@ -5,5 +5,5 @@ import me.choicore.springbootddd.domain.model.UserProfile;
 
 public interface ModifyUserProfileUseCase {
 
-    UserProfile modifyUserProfile(UserProfile domain);
+    UserProfile modifyUserProfile(UserProfile userProfile);
 }

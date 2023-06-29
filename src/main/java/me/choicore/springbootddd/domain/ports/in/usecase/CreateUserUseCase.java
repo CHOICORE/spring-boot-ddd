@@ -6,5 +6,5 @@ import me.choicore.springbootddd.domain.model.UserProfile;
 
 public interface CreateUserUseCase {
 
-    UserProfile createBy(CreateUserProfile user);
+    UserProfile createBy(CreateUserProfile createUserProfile);
 }

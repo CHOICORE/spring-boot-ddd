@@ -35,29 +35,31 @@ class UserProfilePortTest {
     @Test
     void findById() {
 
+        // given
+        Long userId = 1L;
+
         // when
-        UserProfile userProfile = userProfilePort.findById(1L);
+        UserProfile userProfile = userProfilePort.findById(userId);
 
         // then
         assertThat(userProfile).isNotNull();
         assertThat(userProfile.username()).isEqualTo("최재형");
         assertThat(userProfile.nickname()).isEqualTo("choicore");
-
     }
 
     @Test
     void findBy() {
 
+        // given
         QueryUserProfile name = QueryUserProfile.builder()
                                                 .username("최재형")
                                                 .build();
 
-
+        // when
         List<UserProfile> userProfiles = userProfilePort.findBy(name);
 
+        // then
         assertThat(userProfiles).isNotNull();
         assertThat(userProfiles.size()).isEqualTo(1);
-
-
     }
 }

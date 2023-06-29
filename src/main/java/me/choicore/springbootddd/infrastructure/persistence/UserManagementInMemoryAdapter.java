@@ -7,12 +7,15 @@ import me.choicore.springbootddd.domain.ports.out.DeleteUserPort;
 import me.choicore.springbootddd.domain.ports.out.ModifyUserPort;
 import me.choicore.springbootddd.domain.ports.out.UserProfilePort;
 import me.choicore.springbootddd.infrastructure.persistence.mappers.UserMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+
+@Repository
 public class UserManagementInMemoryAdapter implements
         CreateUserPort
         , UserProfilePort

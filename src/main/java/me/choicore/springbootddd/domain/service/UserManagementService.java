@@ -11,6 +11,7 @@ import me.choicore.springbootddd.domain.ports.out.CreateUserPort;
 import me.choicore.springbootddd.domain.ports.out.DeleteUserPort;
 import me.choicore.springbootddd.domain.ports.out.ModifyUserPort;
 import me.choicore.springbootddd.domain.ports.out.UserProfilePort;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -24,6 +25,7 @@ import me.choicore.springbootddd.domain.ports.out.UserProfilePort;
  *     <li> {@link DeleteUserUseCase}
  * </ul>
  */
+@Service
 @RequiredArgsConstructor
 public class UserManagementService implements
         CreateUserUseCase

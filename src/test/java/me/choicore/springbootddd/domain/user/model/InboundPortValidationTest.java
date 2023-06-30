@@ -43,8 +43,6 @@ class InboundPortValidationTest {
 
         assertThat(dayOfBirth).isNotNull();
         assertThat(dayOfBirth.dayOfBirth()).isEqualTo("2021-09-22");
-
-
     }
 
 
@@ -83,6 +81,7 @@ class InboundPortValidationTest {
                     new CreateUserProfile(
                             "admin"
                             , ""
+                            , null
                             , new BirthDate(1993, 9, 22)
                     );
                 }
@@ -96,7 +95,9 @@ class InboundPortValidationTest {
                     new CreateUserProfile(
                             "admin"
                             , ""
+                            , Gender.MALE
                             , new BirthDate(1993, 9, 22)
+
                     );
                 }
         ).isInstanceOf(IllegalArgumentException.class);
@@ -105,6 +106,7 @@ class InboundPortValidationTest {
         CreateUserProfile admin = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , Gender.MALE
                 , new BirthDate(1993, 9, 22)
         );
 

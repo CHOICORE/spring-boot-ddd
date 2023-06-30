@@ -6,7 +6,7 @@ import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserProfilePort;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.UserManagementInMemoryAdapter;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.UserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.PersistenceUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class QueryUserProfilePortTest {
 
-    private final QueryUserProfilePort queryUserProfilePort = new UserManagementInMemoryAdapter(InMemoryDb.setupTestModule(), new UserMapper());
+    private final QueryUserProfilePort queryUserProfilePort = new UserManagementInMemoryAdapter(InMemoryDb.setupTestModule(), new PersistenceUserMapper());
 
     @Test
     @DisplayName("ID로 사용자를 조회한다.")
@@ -69,4 +69,5 @@ class QueryUserProfilePortTest {
         assertThat(foundByBirthYear).isNotNull();
         assertThat(foundByBirthYear.size()).isEqualTo(1);
     }
+
 }

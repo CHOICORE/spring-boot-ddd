@@ -6,7 +6,7 @@ import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserProfilePort;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserProfilePort;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.UserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.PersistenceUserMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,32 +21,31 @@ public class UserManagementInMemoryAdapter implements
         , QueryUserProfilePort {
 
     private final InMemoryDb inMemoryDb;
-    private final UserMapper userMapper;
 
-    public UserManagementInMemoryAdapter(InMemoryDb inMemoryDb, UserMapper userMapper) {
+    private final PersistenceUserMapper persistenceUserMapper;
+
+    public UserManagementInMemoryAdapter(InMemoryDb inMemoryDb, PersistenceUserMapper persistenceUserMapper) {
         this.inMemoryDb = inMemoryDb;
-        this.userMapper = userMapper;
+        this.persistenceUserMapper = persistenceUserMapper;
     }
-
 
     @Override
     public UserProfile findById(Long userId) {
-        return userMapper.fromEntity(findUserById(userId));
+        return persistenceUserMapper.fromEntity(findUserById(userId));
     }
-
 
     @Override
     public List<UserProfile> findBy(QueryUserProfile user) {
         return inMemoryDb.values()
                          .stream()
                          .filter(matchesUser(user))
-                         .map(userMapper::fromEntity)
+                         .map(persistenceUserMapper::fromEntity)
                          .toList();
     }
 
     @Override
     public List<UserProfile> findAll() {
-        return userMapper.fromEntities(inMemoryDb.values().stream().toList());
+        return persistenceUserMapper.fromEntities(inMemoryDb.values().stream().toList());
     }
 
     private Predicate<UserEntity> matchesUser(QueryUserProfile user) {
@@ -72,12 +71,13 @@ public class UserManagementInMemoryAdapter implements
                                           .userId(generatedUserId)
                                           .username(user.username())
                                           .nickname(user.nickname())
+                                          .gender(persistenceUserMapper.convertToGenderDomain(user.gender()))
                                           .birthDate(user.birthDate().dayOfBirth())
                                           .build();
 
         inMemoryDb.put(generatedUserId, userEntity);
 
-        return userMapper.fromEntity(userEntity);
+        return persistenceUserMapper.fromEntity(userEntity);
     }
 
     @Override
@@ -89,9 +89,8 @@ public class UserManagementInMemoryAdapter implements
     public UserProfile modifyBy(ModifyUserProfile user) {
         UserEntity userEntity = findUserById(user.userId());
         userEntity.changeNickname(user.nickname());
-        return userMapper.fromEntity(userEntity);
+        return persistenceUserMapper.fromEntity(userEntity);
     }
-
 
     @Override
     public void deleteById(Long userId) {
@@ -110,6 +109,5 @@ public class UserManagementInMemoryAdapter implements
     private UserEntity findUserById(Long userId) {
         return Optional.ofNullable(inMemoryDb.get(userId)).orElseThrow(() -> new IllegalStateException("존재하지 않는 사용자입니다."));
     }
-
 
 }

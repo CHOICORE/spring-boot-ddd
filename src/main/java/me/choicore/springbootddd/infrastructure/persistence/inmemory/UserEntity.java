@@ -16,13 +16,21 @@ public class UserEntity {
     private Long userId;
     private String username;
     private String nickname;
+    private Gender gender;
     private LocalDate birthDate;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-
 
     public void changeNickname(String nickname) {
         this.nickname = nickname;
         this.modifiedAt = LocalDateTime.now();
     }
+
+    /**
+     * gender type code.
+     */
+    public enum Gender {
+        M, F
+    }
+
 }

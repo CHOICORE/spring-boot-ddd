@@ -14,6 +14,7 @@ import java.util.UUID;
  * @param userId    {@link Long}
  * @param username  {@link String}
  * @param nickname  {@link String}
+ * @param gender    {@link Gender}
  * @param birthDate {@link BirthDate}
  * @param createdAt {@link LocalDateTime}
  */
@@ -22,6 +23,7 @@ public record UserProfile(
         , Long userId
         , String username
         , String nickname
+        , Gender gender
         , BirthDate birthDate
         , LocalDateTime createdAt
 
@@ -34,6 +36,7 @@ public record UserProfile(
      * @param userId    {@link Long}
      * @param username  {@link String}
      * @param nickname  {@link String}
+     * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
      */
     @Builder
@@ -43,11 +46,12 @@ public record UserProfile(
                 , userId
                 , username
                 , nickname
+                , gender
                 , birthDate
         );
     }
 
-    private void validate(UUID uuid, Long userId, String username, String nickname, BirthDate birthDate) {
+    private void validate(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
@@ -59,6 +63,12 @@ public record UserProfile(
         }
         if (nickname == null || nickname.isBlank()) {
             throw new IllegalArgumentException("nickname must not be null or blank");
+        }
+        if (gender == null) {
+            throw new IllegalArgumentException("gender must not be null");
+        }
+        if (birthDate == null) {
+            throw new IllegalArgumentException("birthDate must not be null");
         }
     }
 }

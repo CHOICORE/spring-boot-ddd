@@ -59,7 +59,6 @@ public class InMemoryDb {
 //                         .orElse(0L) + 1;
     }
 
-
     private void setup() {
 
         long userId = 1L;
@@ -68,27 +67,13 @@ public class InMemoryDb {
                                           .userId(userId)
                                           .username("최재형")
                                           .nickname("choicore")
+                                          .gender(UserEntity.Gender.M)
                                           .birthDate(LocalDate.of(1993, 9, 22))
                                           .createdAt(LocalDateTime.now())
                                           .modifiedAt(null)
                                           .build();
 
         inMemoryDb.put(userId, userEntity);
-//
-//        Stream.iterate(1, i -> i + 1)
-//              .limit(1)
-//              .forEach(i -> {
-//                  UserEntity userEntity = UserEntity.builder()
-//                                                    .uuid(UUID.randomUUID())
-//                                                    .userId((long) i)
-//                                                    .username("test" + i)
-//                                                    .nickname("test" + i)
-//                                                    .birthDate(LocalDate.of(1990, 1, i))
-//                                                    .createdAt(LocalDateTime.now())
-//                                                    .modifiedAt(null)
-//                                                    .build();
-//
-//                  userRepository.put((long) i, userEntity);
-//              });
     }
+
 }

@@ -10,16 +10,8 @@ import java.util.UUID;
  * user profile retrieve model.
  * </p>
  */
-public final class UserProfile {
-    private final UUID uuid;
-    private final Long userId;
-    private final String username;
-    private final String nickname;
-    private final Gender gender;
-    private final BirthDate birthDate;
-    private final LocalDateTime createdAt;
-
-
+public record UserProfile(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate,
+                          LocalDateTime createdAt) {
     /**
      * default constructor
      *
@@ -31,14 +23,7 @@ public final class UserProfile {
      * @param birthDate {@link BirthDate}
      */
     @Builder
-    public UserProfile(
-            final UUID uuid
-            , final Long userId
-            , final String username
-            , final String nickname
-            , final Gender gender
-            , final BirthDate birthDate
-            , final LocalDateTime createdAt) {
+    public UserProfile {
         this.validate(
                 uuid
                 , userId
@@ -47,13 +32,6 @@ public final class UserProfile {
                 , gender
                 , birthDate
         );
-        this.uuid = uuid;
-        this.userId = userId;
-        this.username = username;
-        this.nickname = nickname;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.createdAt = createdAt;
     }
 
     private void validate(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate) {
@@ -75,34 +53,6 @@ public final class UserProfile {
         if (birthDate == null) {
             throw new IllegalArgumentException("birthDate must not be null");
         }
-    }
-
-    public UUID uuid() {
-        return uuid;
-    }
-
-    public Long userId() {
-        return userId;
-    }
-
-    public String username() {
-        return username;
-    }
-
-    public String nickname() {
-        return nickname;
-    }
-
-    public Gender gender() {
-        return gender;
-    }
-
-    public BirthDate birthDate() {
-        return birthDate;
-    }
-
-    public LocalDateTime createdAt() {
-        return createdAt;
     }
 
 }

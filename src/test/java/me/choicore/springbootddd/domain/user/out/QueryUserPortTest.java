@@ -3,11 +3,10 @@ package me.choicore.springbootddd.domain.user.out;
 
 import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserManagementInMemoryAdapter;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class QueryUserPortTest {
 
-    private final QueryUserPort queryUserPort = new UserManagementInMemoryAdapter(UserInMemoryDb.testInstance(), new PersistenceInMemoryUserMapper());
+    private final QueryUserPort queryUserPort = new UserManagementInMemoryAdapter(InMemoryDb.setupTestModule(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("ID로 사용자를 조회한다.")
@@ -31,10 +30,7 @@ class QueryUserPortTest {
 
         // then
         assertThat(userProfile).isNotNull();
-        assertThat(userProfile.userId()).isEqualTo(userId);
-        assertThat(userProfile.username().fullName()).isEqualTo("재형 최");
-        assertThat(userProfile.username().firstName()).isEqualTo("재형");
-        assertThat(userProfile.username().lastName()).isEqualTo("최");
+        assertThat(userProfile.username()).isEqualTo("최재형");
         assertThat(userProfile.nickname()).isEqualTo("choicore");
     }
 
@@ -44,7 +40,7 @@ class QueryUserPortTest {
 
         // given
         QueryUserProfile queryByUsername = QueryUserProfile.builder()
-                                                           .username(Username.of("재형", "최"))
+                                                           .username("최재형")
                                                            .build();
 
         QueryUserProfile queryByNickname = QueryUserProfile.builder()
@@ -56,11 +52,11 @@ class QueryUserPortTest {
                                                             .build();
 
         // when
-        List<UserProfile> foundByUsername = queryUserPort.findByUserProfile(queryByUsername);
+        List<UserProfile> foundByUsername = queryUserPort.findBy(queryByUsername);
 
-        List<UserProfile> foundByNickname = queryUserPort.findByUserProfile(queryByNickname);
+        List<UserProfile> foundByNickname = queryUserPort.findBy(queryByNickname);
 
-        List<UserProfile> foundByBirthYear = queryUserPort.findByUserProfile(queryByBirthYear);
+        List<UserProfile> foundByBirthYear = queryUserPort.findBy(queryByBirthYear);
 
 
         // then

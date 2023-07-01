@@ -9,69 +9,62 @@ import java.util.UUID;
  * <p>
  * user profile retrieve model.
  * </p>
- *
- * @param uuid      {@link UUID}
- * @param userId    {@link Long}
- * @param email     {@link String}
- * @param password  {@link String}
- * @param username  {@link Username}
- * @param nickname  {@link String}
- * @param gender    {@link Gender}
- * @param birthDate {@link BirthDate}
- * @param createdAt {@link LocalDateTime}
  */
-public record UserProfile(
-        UUID uuid
-        , Long userId
-        , String email
-        , String password
-        , Username username
-        , String nickname
-        , Gender gender
-        , BirthDate birthDate
-        , LocalDateTime createdAt) {
+public final class UserProfile {
+    private final UUID uuid;
+    private final Long userId;
+    private final String username;
+    private final String nickname;
+    private final Gender gender;
+    private final BirthDate birthDate;
+    private final LocalDateTime createdAt;
+
+
     /**
      * default constructor
      *
      * @param uuid      {@link UUID}
      * @param userId    {@link Long}
-     * @param email     {@link String}
-     * @param password  {@link String}
-     * @param username  {@link Username}
+     * @param username  {@link String}
      * @param nickname  {@link String}
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
-     * @param createdAt {@link LocalDateTime}
      */
     @Builder
-    public UserProfile {
+    public UserProfile(
+            final UUID uuid
+            , final Long userId
+            , final String username
+            , final String nickname
+            , final Gender gender
+            , final BirthDate birthDate
+            , final LocalDateTime createdAt) {
         this.validate(
                 uuid
                 , userId
-                , email
-                , password
                 , username
                 , nickname
                 , gender
                 , birthDate
         );
+        this.uuid = uuid;
+        this.userId = userId;
+        this.username = username;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.createdAt = createdAt;
     }
 
-    private void validate(final UUID uuid, final Long userId, final String email, final String password, final Username username, final String nickname, final Gender gender, final BirthDate birthDate) {
+    private void validate(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
         if (userId == null) {
             throw new IllegalArgumentException("userId must not be null");
         }
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("email must not be null or blank");
-        }
-        if (password == null || password.isBlank()) {
-            throw new IllegalArgumentException("password must not be null or blank");
-        }
-        if (username == null) {
-            throw new IllegalArgumentException("fullName must not be null");
+        if (username == null || username.isBlank()) {
+            throw new IllegalArgumentException("username must not be null or blank");
         }
         if (nickname == null || nickname.isBlank()) {
             throw new IllegalArgumentException("nickname must not be null or blank");
@@ -82,6 +75,34 @@ public record UserProfile(
         if (birthDate == null) {
             throw new IllegalArgumentException("birthDate must not be null");
         }
+    }
+
+    public UUID uuid() {
+        return uuid;
+    }
+
+    public Long userId() {
+        return userId;
+    }
+
+    public String username() {
+        return username;
+    }
+
+    public String nickname() {
+        return nickname;
+    }
+
+    public Gender gender() {
+        return gender;
+    }
+
+    public BirthDate birthDate() {
+        return birthDate;
+    }
+
+    public LocalDateTime createdAt() {
+        return createdAt;
     }
 
 }

@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InboundPortValidationTest {
 
-
     @Test
     @DisplayName("사용자의 생년월일 정보를 위한 인바운드 포트의 유효성 검사를 수행한다.")
     void test_user_day_of_birth_instance() {
@@ -118,4 +117,5 @@ class InboundPortValidationTest {
 
         assertThat(admin).isNotNull();
     }
+
 }

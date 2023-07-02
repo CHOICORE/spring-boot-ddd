@@ -20,7 +20,7 @@ public record BirthDateResponse(
         , int month
         , int dayOfMonth
 ) {
-    private static LocalDate DAY_OF_BIRTH;
+    private static LocalDate DATE_OF_BIRTH;
 
     /**
      * default constructor
@@ -72,15 +72,15 @@ public record BirthDateResponse(
     /**
      * @return {@link LocalDate}
      */
-    public LocalDate dayOfBirth() {
-        return DAY_OF_BIRTH;
+    public LocalDate dateOfBirth() {
+        return DATE_OF_BIRTH;
     }
 
     private void validate(int year, int month, int dayOfMonth) {
         try {
-            DAY_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
+            DATE_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
         } catch (Exception e) {
-            throw new IllegalArgumentException("invalid date");
+            throw new IllegalArgumentException("Invalid date");
         }
     }
 

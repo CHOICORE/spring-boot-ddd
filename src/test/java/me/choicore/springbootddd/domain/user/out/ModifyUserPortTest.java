@@ -1,22 +1,19 @@
 package me.choicore.springbootddd.domain.user.out;
 
-import me.choicore.springbootddd.domain.user.model.BirthDate;
-import me.choicore.springbootddd.domain.user.model.CreateUserProfile;
-import me.choicore.springbootddd.domain.user.model.Gender;
-import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserProfilePort;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.UserManagementInMemoryAdapter;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.PersistenceUserMapper;
+import me.choicore.springbootddd.domain.user.model.*;
+import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserInMemoryDb;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ModifyUserProfilePortTest {
+class ModifyUserPortTest {
 
-    private final ModifyUserProfilePort modifyUserProfilePort = new UserManagementInMemoryAdapter(new InMemoryDb(), new PersistenceUserMapper());
+    private final ModifyUserPort modifyUserPort = new UserManagementInMemoryAdapter(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("중복된 사용자를 생성하면 IllegalStateException이 발생한다.")
@@ -25,6 +22,8 @@ class ModifyUserProfilePortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , Username.of("재형", "최")
+                , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
         );
@@ -32,6 +31,8 @@ class ModifyUserProfilePortTest {
         CreateUserProfile duplicateUser = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , Username.of("재형", "최")
+                , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
         );
@@ -40,8 +41,8 @@ class ModifyUserProfilePortTest {
         assertThatThrownBy(
                 () -> {
                     // when
-                    modifyUserProfilePort.createBy(user);
-                    modifyUserProfilePort.createBy(duplicateUser);
+                    modifyUserPort.createBy(user);
+                    modifyUserPort.createBy(duplicateUser);
                 }
         ).isInstanceOf(IllegalStateException.class)
          .hasMessageMatching("이미 존재하는 사용자입니다.");
@@ -55,17 +56,21 @@ class ModifyUserProfilePortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
+                , Username.of("재형", "최")
+                , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
         );
 
         // when
-        UserProfile createdUser = modifyUserProfilePort.createBy(user);
+        UserProfile createdUser = modifyUserPort.createBy(user);
 
         // then
         assertThat(createdUser).isNotNull();
-        assertThat(createdUser.username()).isEqualTo("admin");
-        assertThat(createdUser.nickname()).isEqualTo("admin");
+        assertThat(createdUser.username().fullName()).isEqualTo("재형 최");
+        assertThat(createdUser.username().firstName()).isEqualTo("재형");
+        assertThat(createdUser.username().lastName()).isEqualTo("최");
+        assertThat(createdUser.nickname()).isEqualTo("choicore");
 
     }
 

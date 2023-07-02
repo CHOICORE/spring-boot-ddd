@@ -7,7 +7,10 @@ import java.time.LocalDate;
 
 
 public record CreateUserRequest(
-        String username
+        String email
+        , String password
+        , String firstName
+        , String lastName
         , String nickname
         , GenderType gender
         , LocalDate birthDate

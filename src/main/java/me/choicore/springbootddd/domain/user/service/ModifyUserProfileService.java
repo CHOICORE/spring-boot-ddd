@@ -5,7 +5,7 @@ import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase
 import me.choicore.springbootddd.domain.user.model.CreateUserProfile;
 import me.choicore.springbootddd.domain.user.model.ModifyUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserProfilePort;
+import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
 import org.springframework.stereotype.Service;
 
 
@@ -19,20 +19,20 @@ import org.springframework.stereotype.Service;
 public class ModifyUserProfileService implements
         ModifyUserProfileUseCase {
 
-    private final ModifyUserProfilePort modifyUserPort;
+    private final ModifyUserPort modifyUserPort;
 
     @Override
-    public UserProfile createBy(CreateUserProfile createUserProfile) {
+    public UserProfile createBy(final CreateUserProfile createUserProfile) {
         return modifyUserPort.createBy(createUserProfile);
     }
 
     @Override
-    public void deleteById(Long userId) {
+    public void deleteById(final Long userId) {
         modifyUserPort.deleteById(userId);
     }
 
     @Override
-    public UserProfile modifyUserProfile(ModifyUserProfile modifyUserProfile) {
+    public UserProfile modifyUserProfile(final ModifyUserProfile modifyUserProfile) {
         return modifyUserPort.modifyBy(modifyUserProfile);
     }
 }

@@ -8,7 +8,9 @@ import java.util.UUID;
 
 public record UserProfileResponse(
         UUID id
-        , String username
+        , String email
+        , String firstName
+        , String lastName
         , String nickname
         , GenderType gender
         , BirthDateResponse birthDate) {

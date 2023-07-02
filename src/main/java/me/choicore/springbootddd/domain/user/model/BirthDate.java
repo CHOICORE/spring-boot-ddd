@@ -19,7 +19,7 @@ public record BirthDate(
         , int month
         , int dayOfMonth
 ) {
-    private static LocalDate DAY_OF_BIRTH;
+    private static LocalDate DATE_OF_BIRTH;
 
     /**
      * default constructor
@@ -37,7 +37,7 @@ public record BirthDate(
      * @param birthDate {@link LocalDate}
      * @return {@link BirthDate}
      */
-    public static BirthDate of(LocalDate birthDate) {
+    public static BirthDate of(final LocalDate birthDate) {
         return BirthDate.of(
                 birthDate.getYear()
                 , birthDate.getMonthValue()
@@ -51,20 +51,20 @@ public record BirthDate(
      * @param dayOfMonth {@link int}
      * @return {@link BirthDate}
      */
-    public static BirthDate of(int year, int month, int dayOfMonth) {
+    public static BirthDate of(final int year, final int month, final int dayOfMonth) {
         return new BirthDate(year, month, dayOfMonth);
     }
 
     /**
      * @return {@link LocalDate}
      */
-    public LocalDate dayOfBirth() {
-        return DAY_OF_BIRTH;
+    public LocalDate dateOfBirth() {
+        return DATE_OF_BIRTH;
     }
 
-    private void validate(int year, int month, int dayOfMonth) {
+    private void validate(final int year, final int month, final int dayOfMonth) {
         try {
-            DAY_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
+            DATE_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
         } catch (Exception e) {
             throw new IllegalArgumentException("invalid date");
         }

@@ -4,7 +4,8 @@ import lombok.RequiredArgsConstructor;
 import me.choicore.springbootddd.domain.user.in.usecase.GetUserProfileQuery;
 import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.domain.user.out.persistence.QueryUserProfilePort;
+import me.choicore.springbootddd.domain.user.model.Username;
+import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,15 +20,26 @@ import java.util.List;
 public class QueryUserProfileService implements
         GetUserProfileQuery {
 
-    private final QueryUserProfilePort queryUserProfilePort;
+    private final QueryUserPort queryUserPort;
 
     @Override
-    public UserProfile getUserProfile(Long userId) {
-        return queryUserProfilePort.findById(userId);
+    public UserProfile getUserProfile(final Long userId) {
+        return queryUserPort.findById(userId);
     }
 
     @Override
-    public List<UserProfile> getUserProfiles(QueryUserProfile userProfile) {
-        return queryUserProfilePort.findBy(userProfile);
+    public List<UserProfile> getUserProfiles(final QueryUserProfile userProfile) {
+        return queryUserPort.findByUserProfile(userProfile);
+    }
+
+
+    @Override
+    public List<UserProfile> getAllUserProfiles() {
+        return queryUserPort.findAll();
+    }
+
+    @Override
+    public boolean existsByUsername(final Username username) {
+        return queryUserPort.existsByUsername(username);
     }
 }

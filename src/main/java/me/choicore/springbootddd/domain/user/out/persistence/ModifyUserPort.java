@@ -5,12 +5,12 @@ import me.choicore.springbootddd.domain.user.model.ModifyUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 
 
-public interface ModifyUserProfilePort {
+public interface ModifyUserPort {
 
-    UserProfile modifyBy(ModifyUserProfile user);
+    UserProfile modifyBy(final ModifyUserProfile user);
 
-    void deleteById(Long userId);
+    void deleteById(final Long userId);
 
-    UserProfile createBy(CreateUserProfile user);
+    UserProfile createBy(final CreateUserProfile user);
 
 }

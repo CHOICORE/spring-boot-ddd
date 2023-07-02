@@ -1,2 +1,7 @@
 server:
   port: 9090
+  error:
+    include-exception: false
+    include-message: always
+    include-stacktrace: never
+    whitelabel.enabled: false

@@ -1,13 +1,12 @@
-package me.choicore.springbootddd.domain.user.out;
+package me.choicore.springbootddd.domain.user.out.persistence;
 
 
 import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
-import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserManagementInMemoryAdapter;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

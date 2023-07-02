@@ -1,9 +1,9 @@
-package me.choicore.springbootddd.infrastructure.persistence.user.inmemory;
+package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
 import me.choicore.springbootddd.domain.user.model.*;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

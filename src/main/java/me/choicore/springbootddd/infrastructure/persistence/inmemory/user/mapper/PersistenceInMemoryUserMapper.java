@@ -1,7 +1,7 @@
-package me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper;
+package me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper;
 
 import me.choicore.springbootddd.domain.user.model.*;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserEntity;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

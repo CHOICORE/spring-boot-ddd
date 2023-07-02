@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.infrastructure.persistence.user.inmemory;
+package me.choicore.springbootddd.infrastructure.persistence.inmemory;
 
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.function.Predicate;
  * in-memory database.
  * <p>
  */
-abstract class InMemoryDb<T extends InMemoryEntity<R>, R> {
+public abstract class InMemoryDb<T extends InMemoryEntity<R>, R> {
 
     private final Map<R, T> inMemoryDb;
 
@@ -21,24 +21,16 @@ abstract class InMemoryDb<T extends InMemoryEntity<R>, R> {
     }
 
     protected List<T> find(final Predicate<T> predicate) {
-        return this.inMemoryDb.values()
-                              .stream()
-                              .filter(predicate)
-                              .toList();
+        return this.inMemoryDb.values().stream().filter(predicate).toList();
     }
 
     public boolean exists(final Predicate<T> predicate) {
-        return this.inMemoryDb.values()
-                              .stream()
-                              .anyMatch(predicate);
+        return this.inMemoryDb.values().stream().anyMatch(predicate);
     }
 
     public List<T> findAll() {
-        return this.inMemoryDb.values()
-                              .stream()
-                              .toList();
+        return this.inMemoryDb.values().stream().toList();
     }
-
 
     public T findById(R userId) {
         return inMemoryDb.get(userId);

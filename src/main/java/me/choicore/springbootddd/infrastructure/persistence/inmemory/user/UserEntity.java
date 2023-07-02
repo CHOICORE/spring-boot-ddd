@@ -1,6 +1,7 @@
-package me.choicore.springbootddd.infrastructure.persistence.user.inmemory;
+package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
 import lombok.Builder;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

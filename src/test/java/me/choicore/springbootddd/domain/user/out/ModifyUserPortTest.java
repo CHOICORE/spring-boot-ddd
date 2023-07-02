@@ -2,9 +2,9 @@ package me.choicore.springbootddd.domain.user.out;
 
 import me.choicore.springbootddd.domain.user.model.*;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserInMemoryDb;
 import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserManagementInMemoryAdapter;
 import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.repository.UserInMemoryDb;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,7 @@ class ModifyUserPortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
-                , FullName.of("재형", "최")
+                , Username.of("재형", "최")
                 , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
@@ -31,7 +31,7 @@ class ModifyUserPortTest {
         CreateUserProfile duplicateUser = new CreateUserProfile(
                 "admin"
                 , "admin"
-                , FullName.of("재형", "최")
+                , Username.of("재형", "최")
                 , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
@@ -56,7 +56,7 @@ class ModifyUserPortTest {
         CreateUserProfile user = new CreateUserProfile(
                 "admin"
                 , "admin"
-                , FullName.of("재형", "최")
+                , Username.of("재형", "최")
                 , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
@@ -67,8 +67,10 @@ class ModifyUserPortTest {
 
         // then
         assertThat(createdUser).isNotNull();
-        assertThat(createdUser.fullName().fullName()).isEqualTo("admin");
-        assertThat(createdUser.nickname()).isEqualTo("admin");
+        assertThat(createdUser.username().fullName()).isEqualTo("재형 최");
+        assertThat(createdUser.username().firstName()).isEqualTo("재형");
+        assertThat(createdUser.username().lastName()).isEqualTo("최");
+        assertThat(createdUser.nickname()).isEqualTo("choicore");
 
     }
 

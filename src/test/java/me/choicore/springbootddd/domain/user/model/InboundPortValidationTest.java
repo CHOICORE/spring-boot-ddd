@@ -42,7 +42,7 @@ class InboundPortValidationTest {
         BirthDate dayOfBirth = new BirthDate(2021, 9, 22);
 
         assertThat(dayOfBirth).isNotNull();
-        assertThat(dayOfBirth.dayOfBirth()).isEqualTo("2021-09-22");
+        assertThat(dayOfBirth.dateOfBirth()).isEqualTo("2021-09-22");
     }
 
 
@@ -56,7 +56,7 @@ class InboundPortValidationTest {
                 {
                     // when
                     CreateUserProfile.builder()
-                                     .fullName(null)
+                                     .username(null)
                                      .nickname(null)
                                      .build();
                 }
@@ -67,7 +67,7 @@ class InboundPortValidationTest {
                 () -> {
                     // when
                     CreateUserProfile.builder()
-                                     .fullName(FullName.of("", ""))
+                                     .username(Username.of("", ""))
                                      .nickname("")
                                      .build();
                 }
@@ -110,7 +110,7 @@ class InboundPortValidationTest {
         CreateUserProfile admin = new CreateUserProfile(
                 "admin"
                 , "admin"
-                , FullName.of("재형", "최")
+                , Username.of("재형", "최")
                 , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)

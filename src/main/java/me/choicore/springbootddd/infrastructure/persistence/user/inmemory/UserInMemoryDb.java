@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 
 
 @Repository
-public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
+class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
 
     public UserInMemoryDb() {
         super();

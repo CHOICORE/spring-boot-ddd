@@ -9,7 +9,7 @@ import lombok.Builder;
  *
  * @param email     {@link String}
  * @param password  {@link String}
- * @param fullName  {@link FullName}
+ * @param username  {@link Username}
  * @param nickname  {@link String}
  * @param gender    {@link Gender}
  * @param birthDate {@link BirthDate}
@@ -17,7 +17,7 @@ import lombok.Builder;
 public record CreateUserProfile(
         String email
         , String password
-        , FullName fullName
+        , Username username
         , String nickname
         , Gender gender
         , BirthDate birthDate
@@ -28,7 +28,7 @@ public record CreateUserProfile(
      *
      * @param email     {@link String}
      * @param password  {@link String}
-     * @param fullName  {@link FullName}
+     * @param username  {@link Username}
      * @param nickname  {@link String}
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
@@ -38,7 +38,7 @@ public record CreateUserProfile(
         validate(
                 email
                 , password
-                , fullName
+                , username
                 , nickname
                 , gender
                 , birthDate
@@ -46,14 +46,48 @@ public record CreateUserProfile(
         );
     }
 
+    /**
+     * validate for parameters
+     *
+     * @param email     {@link String}
+     * @param password  {@link String}
+     * @param username  {@link Username}
+     * @param nickname  {@link String}
+     * @param gender    {@link Gender}
+     * @param birthDate {@link BirthDate}
+     */
     private void validate(
             final String email
             , final String password
-            , final FullName firstName
+            , final Username username
             , final String nickname
             , final Gender gender
             , final BirthDate birthDate
     ) {
 
+
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("email is null or blank");
+        }
+        if (password == null || password.isBlank()) {
+            throw new IllegalArgumentException("password is null or blank");
+        }
+
+        if (username == null) {
+            throw new IllegalArgumentException("username is null");
+        }
+        // validate username
+        if (username.firstName() == null || username.firstName().isBlank()) {
+            throw new IllegalArgumentException("username.firstName is null or blank");
+        }
+        if (username.lastName() == null || username.lastName().isBlank()) {
+            throw new IllegalArgumentException("username.lastName is null or blank");
+        }
+
+        // validate nickname
+        if (nickname == null || nickname.isBlank()) {
+            throw new IllegalArgumentException("nickname is null or blank");
+        }
     }
+
 }

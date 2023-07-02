@@ -14,7 +14,7 @@ import java.util.UUID;
  * @param userId    {@link Long}
  * @param email     {@link String}
  * @param password  {@link String}
- * @param fullName  {@link FullName}
+ * @param username  {@link Username}
  * @param nickname  {@link String}
  * @param gender    {@link Gender}
  * @param birthDate {@link BirthDate}
@@ -25,7 +25,7 @@ public record UserProfile(
         , Long userId
         , String email
         , String password
-        , FullName fullName
+        , Username username
         , String nickname
         , Gender gender
         , BirthDate birthDate
@@ -37,7 +37,7 @@ public record UserProfile(
      * @param userId    {@link Long}
      * @param email     {@link String}
      * @param password  {@link String}
-     * @param fullName  {@link FullName}
+     * @param username  {@link Username}
      * @param nickname  {@link String}
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
@@ -50,14 +50,14 @@ public record UserProfile(
                 , userId
                 , email
                 , password
-                , fullName
+                , username
                 , nickname
                 , gender
                 , birthDate
         );
     }
 
-    private void validate(final UUID uuid, final Long userId, final String email, final String password, final FullName fullName, final String nickname, final Gender gender, final BirthDate birthDate) {
+    private void validate(final UUID uuid, final Long userId, final String email, final String password, final Username username, final String nickname, final Gender gender, final BirthDate birthDate) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
@@ -70,7 +70,7 @@ public record UserProfile(
         if (password == null || password.isBlank()) {
             throw new IllegalArgumentException("password must not be null or blank");
         }
-        if (fullName == null) {
+        if (username == null) {
             throw new IllegalArgumentException("fullName must not be null");
         }
         if (nickname == null || nickname.isBlank()) {

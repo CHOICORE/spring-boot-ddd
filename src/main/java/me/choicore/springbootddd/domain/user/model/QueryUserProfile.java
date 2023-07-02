@@ -11,7 +11,7 @@ import java.util.UUID;
  *
  * @param uuid      {@link UUID}
  * @param userId    {@link Long}
- * @param username  {@link String}
+ * @param username  {@link Username}
  * @param nickname  {@link String}
  * @param gender    {@link Gender}
  * @param birthYear {@link int}
@@ -19,7 +19,7 @@ import java.util.UUID;
 public record QueryUserProfile(
         UUID uuid
         , Long userId
-        , String username
+        , Username username
         , String nickname
         , Gender gender
         , int birthYear
@@ -30,7 +30,7 @@ public record QueryUserProfile(
      *
      * @param uuid      {@link UUID}
      * @param userId    {@link Long}
-     * @param username  {@link String}
+     * @param username  {@link Username}
      * @param nickname  {@link String}
      * @param gender    {@link Gender}
      * @param birthYear {@link int}
@@ -47,7 +47,7 @@ public record QueryUserProfile(
         );
     }
 
-    private void validate(final UUID uuid, final Long userId, final String username, final String nickname, final Gender gender, final int birthYear) {
+    private void validate(final UUID uuid, final Long userId, final Username username, final String nickname, final Gender gender, final int birthYear) {
 //        if (uuid == null) {
 //            throw new IllegalArgumentException("uuid must not be null");
 //        }

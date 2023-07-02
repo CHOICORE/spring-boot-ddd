@@ -4,9 +4,9 @@ package me.choicore.springbootddd.domain.user.out;
 import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.UserManagementInMemoryAdapter;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.mapper.PersistenceInMemoryUserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper.PersistenceInMemoryUserMapper;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.repository.UserInMemoryDb;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class QueryUserPortTest {
 
-    private final QueryUserPort queryUserPort = new UserManagementInMemoryAdapter(InMemoryDb.setupTestModule(), new PersistenceInMemoryUserMapper());
+    private final QueryUserPort queryUserPort = new UserManagementInMemoryAdapter(UserInMemoryDb.setUpMock(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("ID로 사용자를 조회한다.")
@@ -30,7 +30,7 @@ class QueryUserPortTest {
 
         // then
         assertThat(userProfile).isNotNull();
-        assertThat(userProfile.username()).isEqualTo("최재형");
+        assertThat(userProfile.fullName().fullName()).isEqualTo("최재형");
         assertThat(userProfile.nickname()).isEqualTo("choicore");
     }
 

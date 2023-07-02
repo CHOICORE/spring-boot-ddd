@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface QueryUserPort {
 
-    UserProfile findById(Long userId);
+    UserProfile findById(final Long userId);
 
-    List<UserProfile> findBy(QueryUserProfile user);
+    List<UserProfile> findBy(final QueryUserProfile user);
 
     List<UserProfile> findAll();
 
-    boolean existsByUsername(String username);
+    boolean existsByUsername(final String username);
 
 }

@@ -1,7 +1,7 @@
 package me.choicore.springbootddd.infrastructure.persistence.user.inmemory.mapper;
 
 import me.choicore.springbootddd.domain.user.model.*;
-import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.UserEntity;
+import me.choicore.springbootddd.infrastructure.persistence.user.inmemory.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -35,7 +35,7 @@ public class PersistenceInMemoryUserMapper {
                 , entity.userId()
                 , entity.email()
                 , entity.password()
-                , Username.of(entity.firstName(), entity.lastName())
+                , FullName.of(entity.firstName(), entity.lastName())
                 , entity.nickname()
                 , convertToGenderEntity(entity.gender())
                 , BirthDate.of(entity.birthDate())
@@ -53,14 +53,13 @@ public class PersistenceInMemoryUserMapper {
     }
 
     public UserEntity fromDomain(final CreateUserProfile domain) {
+        LocalDateTime now = LocalDateTime.now();
         return UserEntity.builder()
-                         .email(domain.email())
-                         .password(domain.password())
-                         .firstName(domain.username().firstName())
-                         .lastName(domain.username().lastName())
+                         .firstName(domain.fullName().firstName())
+                         .lastName(domain.fullName().lastName())
                          .nickname(domain.nickname())
                          .gender(convertToGenderDomain(domain.gender()))
-                         .birthDate(domain.birthDate().dateOfBirth())
+                         .createdAt(now)
                          .build();
     }
 

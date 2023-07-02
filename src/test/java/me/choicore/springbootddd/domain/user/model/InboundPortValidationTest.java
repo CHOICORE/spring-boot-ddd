@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InboundPortValidationTest {
 
+
     @Test
     @DisplayName("사용자의 생년월일 정보를 위한 인바운드 포트의 유효성 검사를 수행한다.")
     void test_user_day_of_birth_instance() {
@@ -41,7 +42,7 @@ class InboundPortValidationTest {
         BirthDate dayOfBirth = new BirthDate(2021, 9, 22);
 
         assertThat(dayOfBirth).isNotNull();
-        assertThat(dayOfBirth.dateOfBirth()).isEqualTo("2021-09-22");
+        assertThat(dayOfBirth.dayOfBirth()).isEqualTo("2021-09-22");
     }
 
 
@@ -55,7 +56,7 @@ class InboundPortValidationTest {
                 {
                     // when
                     CreateUserProfile.builder()
-                                     .username(null)
+                                     .fullName(null)
                                      .nickname(null)
                                      .build();
                 }
@@ -66,7 +67,7 @@ class InboundPortValidationTest {
                 () -> {
                     // when
                     CreateUserProfile.builder()
-                                     .username(Username.of("", ""))
+                                     .fullName(FullName.of("", ""))
                                      .nickname("")
                                      .build();
                 }
@@ -109,7 +110,7 @@ class InboundPortValidationTest {
         CreateUserProfile admin = new CreateUserProfile(
                 "admin"
                 , "admin"
-                , Username.of("재형", "최")
+                , FullName.of("재형", "최")
                 , "choicore"
                 , Gender.MALE
                 , new BirthDate(1993, 9, 22)
@@ -117,5 +118,4 @@ class InboundPortValidationTest {
 
         assertThat(admin).isNotNull();
     }
-
 }

@@ -22,12 +22,12 @@ public class QueryUserProfileService implements
     private final QueryUserPort queryUserPort;
 
     @Override
-    public UserProfile getUserProfile(Long userId) {
+    public UserProfile getUserProfile(final Long userId) {
         return queryUserPort.findById(userId);
     }
 
     @Override
-    public List<UserProfile> getUserProfiles(QueryUserProfile userProfile) {
+    public List<UserProfile> getUserProfiles(final QueryUserProfile userProfile) {
         return queryUserPort.findBy(userProfile);
     }
 }

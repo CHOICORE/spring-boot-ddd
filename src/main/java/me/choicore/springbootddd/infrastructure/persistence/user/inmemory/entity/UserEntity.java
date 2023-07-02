@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.infrastructure.persistence.inmemory;
+package me.choicore.springbootddd.infrastructure.persistence.user.inmemory.entity;
 
 import lombok.Builder;
 
@@ -30,7 +30,6 @@ public record UserEntity(
         , String password
         , String firstName
         , String lastName
-        , String username
         , String nickname
         , Gender gender
         , LocalDate birthDate
@@ -51,11 +50,14 @@ public record UserEntity(
                          .lastName(this.lastName)
                          .nickname(nickname)
                          .userId(this.userId)
-                         .username(this.username)
                          .gender(this.gender)
                          .birthDate(this.birthDate)
                          .createdAt(this.createdAt)
                          .modifiedAt(LocalDateTime.now()).build();
+    }
+
+    public String fullName() {
+        return this.firstName + " " + this.lastName;
     }
 
     /**

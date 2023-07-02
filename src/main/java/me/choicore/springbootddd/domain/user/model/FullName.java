@@ -1,5 +1,7 @@
 package me.choicore.springbootddd.domain.user.model;
 
+import lombok.Builder;
+
 /**
  * @param firstName {@link String}
  * @param lastName  {@link String}
@@ -8,9 +10,16 @@ public record FullName(
         String firstName
         , String lastName
 ) {
-
+    @Builder
     public FullName {
         validate(firstName, lastName);
+    }
+
+    public static FullName of(final String firstName, final String lastName) {
+        return FullName.builder()
+                       .firstName(firstName)
+                       .lastName(lastName)
+                       .build();
     }
 
     private void validate(final String firstName, final String lastName) {

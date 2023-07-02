@@ -9,40 +9,69 @@ import java.util.UUID;
  * <p>
  * user profile retrieve model.
  * </p>
+ *
+ * @param uuid      {@link UUID}
+ * @param userId    {@link Long}
+ * @param email     {@link String}
+ * @param password  {@link String}
+ * @param fullName  {@link FullName}
+ * @param nickname  {@link String}
+ * @param gender    {@link Gender}
+ * @param birthDate {@link BirthDate}
+ * @param createdAt {@link LocalDateTime}
  */
-public record UserProfile(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate,
-                          LocalDateTime createdAt) {
+public record UserProfile(
+        UUID uuid
+        , Long userId
+        , String email
+        , String password
+        , FullName fullName
+        , String nickname
+        , Gender gender
+        , BirthDate birthDate
+        , LocalDateTime createdAt) {
     /**
      * default constructor
      *
      * @param uuid      {@link UUID}
      * @param userId    {@link Long}
-     * @param username  {@link String}
+     * @param email     {@link String}
+     * @param password  {@link String}
+     * @param fullName  {@link FullName}
      * @param nickname  {@link String}
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
+     * @param createdAt {@link LocalDateTime}
      */
     @Builder
     public UserProfile {
         this.validate(
                 uuid
                 , userId
-                , username
+                , email
+                , password
+                , fullName
                 , nickname
                 , gender
                 , birthDate
         );
     }
 
-    private void validate(UUID uuid, Long userId, String username, String nickname, Gender gender, BirthDate birthDate) {
+    private void validate(final UUID uuid, final Long userId, final String email, final String password, final FullName fullName, final String nickname, final Gender gender, final BirthDate birthDate) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
         if (userId == null) {
             throw new IllegalArgumentException("userId must not be null");
         }
-        if (username == null || username.isBlank()) {
-            throw new IllegalArgumentException("username must not be null or blank");
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("email must not be null or blank");
+        }
+        if (password == null || password.isBlank()) {
+            throw new IllegalArgumentException("password must not be null or blank");
+        }
+        if (fullName == null) {
+            throw new IllegalArgumentException("fullName must not be null");
         }
         if (nickname == null || nickname.isBlank()) {
             throw new IllegalArgumentException("nickname must not be null or blank");

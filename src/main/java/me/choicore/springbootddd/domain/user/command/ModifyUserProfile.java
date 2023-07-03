@@ -8,6 +8,7 @@ import lombok.Builder;
  * </p>
  *
  * @param userId   {@link Long}
+ * @param password {@link String}
  * @param nickname {@link String}
  */
 @Builder
@@ -21,6 +22,7 @@ public record ModifyUserProfile(
      * default constructor
      *
      * @param userId   {@link Long}
+     * @param password {@link String}
      * @param nickname {@link String}
      */
     @Builder

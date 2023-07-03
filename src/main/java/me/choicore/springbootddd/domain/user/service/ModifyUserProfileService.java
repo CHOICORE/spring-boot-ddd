@@ -1,9 +1,9 @@
 package me.choicore.springbootddd.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
 import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase;
-import me.choicore.springbootddd.domain.user.model.CreateUserProfile;
-import me.choicore.springbootddd.domain.user.model.ModifyUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
 import org.springframework.stereotype.Service;

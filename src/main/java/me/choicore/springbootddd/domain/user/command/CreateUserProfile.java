@@ -1,6 +1,9 @@
-package me.choicore.springbootddd.domain.user.model;
+package me.choicore.springbootddd.domain.user.command;
 
 import lombok.Builder;
+import me.choicore.springbootddd.domain.user.model.BirthDate;
+import me.choicore.springbootddd.domain.user.model.Gender;
+import me.choicore.springbootddd.domain.user.model.Username;
 
 /**
  * <p>

@@ -1,6 +1,10 @@
 package me.choicore.springbootddd.domain.user.out.persistence;
 
-import me.choicore.springbootddd.domain.user.model.*;
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.model.BirthDate;
+import me.choicore.springbootddd.domain.user.model.Gender;
+import me.choicore.springbootddd.domain.user.model.UserProfile;
+import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapter;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;

@@ -8,6 +8,7 @@ public sealed interface ApiResponse<T> {
         return new Succeed<>(ResultType.SUCCEED, data);
     }
 
+
     static <T> ApiResponse<T> failed(Error error) {
         return new Failed<>(ResultType.FAILED, error);
     }
@@ -17,7 +18,13 @@ public sealed interface ApiResponse<T> {
     }
 
     record Succeed<T>(ResultType resultType, T data) implements ApiResponse<T> {
+
+        @Builder
+        public Succeed {
+        }
+
     }
+
 
     record Failed<T>(ResultType resultType, Error error) implements ApiResponse<T> {
     }
@@ -26,6 +33,7 @@ public sealed interface ApiResponse<T> {
         @Builder
         public Error {
         }
+
     }
 
 }

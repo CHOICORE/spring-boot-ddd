@@ -1,6 +1,10 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
-import me.choicore.springbootddd.domain.user.model.*;
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
+import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.model.UserProfile;
+import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
 import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;

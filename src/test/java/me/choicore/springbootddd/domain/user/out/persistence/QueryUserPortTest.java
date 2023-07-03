@@ -1,7 +1,7 @@
 package me.choicore.springbootddd.domain.user.out.persistence;
 
 
-import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;

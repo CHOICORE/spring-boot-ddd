@@ -3,6 +3,7 @@ package me.choicore.springbootddd.interfaces.rest.user.endpoint;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.choicore.springbootddd.domain.user.in.usecase.GetUserProfileQuery;
 import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.interfaces.rest.ApiResponse;
@@ -10,9 +11,11 @@ import me.choicore.springbootddd.interfaces.rest.user.dto.mapper.PresentationUse
 import me.choicore.springbootddd.interfaces.rest.user.dto.request.CreateUserRequest;
 import me.choicore.springbootddd.interfaces.rest.user.dto.response.UserProfileResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 class UserApi {
 
     private final ModifyUserProfileUseCase modifyUserProfileUseCase;
+    private final GetUserProfileQuery getUserProfileQuery;
     private final PresentationUserMapper presentationUserMapper;
 
     @PostMapping("/api/v1/users")
@@ -34,4 +38,37 @@ class UserApi {
 
         return ResponseEntity.ok(succeed);
     }
+
+
+    @GetMapping("/api/v1/users/{userId}")
+    public ResponseEntity<ApiResponse<UserProfileResponse>> getUserProfile(@PathVariable("userId") Long userId) {
+        log.info("getUserProfile() is called with userId: {}", userId);
+
+        UserProfile foundUserProfile = getUserProfileQuery.getUserProfile(userId);
+
+        UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(foundUserProfile);
+
+        ApiResponse<UserProfileResponse> succeed = ApiResponse.succeed(userProfileResponse);
+
+        return ResponseEntity.ok(succeed);
+    }
+
+    @GetMapping("/api/v1/users")
+    public ResponseEntity<ApiResponse<List<UserProfileResponse>>> getUserProfiles() {
+        log.info("getUserProfiles() is called");
+
+
+        List<UserProfile> foundUserProfiles = getUserProfileQuery.getAllUserProfiles();
+
+        List<UserProfileResponse> collect = foundUserProfiles.stream().flatMap(userProfile -> {
+            UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(userProfile);
+            return Stream.of(userProfileResponse);
+        }).collect(Collectors.toList());
+
+
+        ApiResponse<List<UserProfileResponse>> succeed = ApiResponse.succeed(collect);
+
+        return ResponseEntity.ok(succeed);
+    }
+
 }

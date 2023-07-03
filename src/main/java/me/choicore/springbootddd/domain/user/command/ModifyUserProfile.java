@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.domain.user.model;
+package me.choicore.springbootddd.domain.user.command;
 
 import lombok.Builder;
 
@@ -13,6 +13,7 @@ import lombok.Builder;
 @Builder
 public record ModifyUserProfile(
         Long userId
+        , String password
         , String nickname
 ) {
 

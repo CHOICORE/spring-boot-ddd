@@ -1,7 +1,7 @@
 package me.choicore.springbootddd.domain.user.in.usecase;
 
-import me.choicore.springbootddd.domain.user.model.CreateUserProfile;
-import me.choicore.springbootddd.domain.user.model.ModifyUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 
 

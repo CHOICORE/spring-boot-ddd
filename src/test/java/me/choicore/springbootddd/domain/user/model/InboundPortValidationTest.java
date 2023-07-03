@@ -1,5 +1,6 @@
 package me.choicore.springbootddd.domain.user.model;
 
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

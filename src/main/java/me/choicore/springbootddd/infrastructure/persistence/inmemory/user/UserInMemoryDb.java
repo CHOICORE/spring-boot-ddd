@@ -1,6 +1,6 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
-import me.choicore.springbootddd.domain.user.model.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,11 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper;
 
-import me.choicore.springbootddd.domain.user.model.*;
+import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
+import me.choicore.springbootddd.domain.user.model.BirthDate;
+import me.choicore.springbootddd.domain.user.model.Gender;
+import me.choicore.springbootddd.domain.user.model.UserProfile;
+import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserEntity;
 import org.springframework.stereotype.Component;
 

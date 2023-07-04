@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.application;
+package me.choicore.springbootddd.application.rest.exception;
 
 
 import jakarta.servlet.http.HttpServletRequest;

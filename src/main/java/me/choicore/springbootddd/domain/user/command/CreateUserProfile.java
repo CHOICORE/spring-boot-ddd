@@ -1,6 +1,7 @@
 package me.choicore.springbootddd.domain.user.command;
 
 import lombok.Builder;
+import me.choicore.springbootddd.domain.user.command.UserCommand.Create;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.Username;
@@ -24,7 +25,7 @@ public record CreateUserProfile(
         , String nickname
         , Gender gender
         , BirthDate birthDate
-) {
+) implements Create {
 
     /**
      * default constructor
@@ -59,7 +60,7 @@ public record CreateUserProfile(
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
      */
-    private void validate(
+    public void validate(
             final String email
             , final String password
             , final Username username

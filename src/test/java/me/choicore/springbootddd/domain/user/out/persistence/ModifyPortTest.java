@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ModifyUserPortTest {
+class ModifyPortTest {
 
     private final ModifyUserPort modifyUserPort = new UserManagementInMemoryAdapter(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
 

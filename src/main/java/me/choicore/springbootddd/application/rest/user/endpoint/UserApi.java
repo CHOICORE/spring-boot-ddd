@@ -1,15 +1,15 @@
-package me.choicore.springbootddd.interfaces.rest.user.endpoint;
+package me.choicore.springbootddd.application.rest.user.endpoint;
 
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.choicore.springbootddd.application.rest.ApiResponse;
+import me.choicore.springbootddd.application.rest.user.dto.mapper.PresentationUserMapper;
+import me.choicore.springbootddd.application.rest.user.dto.request.CreateUserRequest;
+import me.choicore.springbootddd.application.rest.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.domain.user.in.usecase.GetUserProfileQuery;
 import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.interfaces.rest.ApiResponse;
-import me.choicore.springbootddd.interfaces.rest.user.dto.mapper.PresentationUserMapper;
-import me.choicore.springbootddd.interfaces.rest.user.dto.request.CreateUserRequest;
-import me.choicore.springbootddd.interfaces.rest.user.dto.response.UserProfileResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

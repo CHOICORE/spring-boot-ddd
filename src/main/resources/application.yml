@@ -5,3 +5,21 @@ server:
     include-message: always
     include-stacktrace: never
     whitelabel.enabled: false
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+

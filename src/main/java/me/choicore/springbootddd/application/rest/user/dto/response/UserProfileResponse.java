@@ -1,7 +1,7 @@
-package me.choicore.springbootddd.interfaces.rest.user.dto.response;
+package me.choicore.springbootddd.application.rest.user.dto.response;
 
 import lombok.Builder;
-import me.choicore.springbootddd.interfaces.enums.GenderType;
+import me.choicore.springbootddd.application.rest.constant.GenderType;
 
 import java.util.UUID;
 

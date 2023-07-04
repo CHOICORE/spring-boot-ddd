@@ -22,7 +22,7 @@ public record Username(
                        .build();
     }
 
-    private void validate(final String firstName, final String lastName) {
+    public void validate(final String firstName, final String lastName) {
         if (firstName == null || firstName.isBlank()) {
             throw new IllegalArgumentException("firstName must not be null or blank");
         }

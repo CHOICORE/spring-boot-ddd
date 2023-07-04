@@ -2,6 +2,8 @@ package me.choicore.springbootddd.domain.user.command;
 
 import lombok.Builder;
 
+import static me.choicore.springbootddd.domain.user.command.UserCommand.Modify;
+
 /**
  * <p>
  * user profile modification model.
@@ -16,7 +18,7 @@ public record ModifyUserProfile(
         Long userId
         , String password
         , String nickname
-) {
+) implements Modify<Long> {
 
     /**
      * default constructor
@@ -30,7 +32,7 @@ public record ModifyUserProfile(
         validate(nickname);
     }
 
-    private void validate(final String nickname) {
+    public void validate(final String nickname) {
         if (nickname == null || nickname.isBlank()) {
             throw new IllegalArgumentException("userId must not be null");
         }

@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.interfaces.rest;
+package me.choicore.springbootddd.application.rest;
 
 import lombok.Builder;
 

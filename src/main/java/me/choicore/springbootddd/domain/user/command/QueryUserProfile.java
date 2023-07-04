@@ -1,6 +1,7 @@
 package me.choicore.springbootddd.domain.user.command;
 
 import lombok.Builder;
+import me.choicore.springbootddd.domain.user.command.UserCommand.Query;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.Username;
 
@@ -24,8 +25,9 @@ public record QueryUserProfile(
         , Username username
         , String nickname
         , Gender gender
+
         , int birthYear
-) {
+) implements Query<Long> {
 
     /**
      * default constructor
@@ -49,7 +51,7 @@ public record QueryUserProfile(
         );
     }
 
-    private void validate(final UUID uuid, final Long userId, final Username username, final String nickname, final Gender gender, final int birthYear) {
+    public void validate(final UUID uuid, final Long userId, final Username username, final String nickname, final Gender gender, final int birthYear) {
 //        if (uuid == null) {
 //            throw new IllegalArgumentException("uuid must not be null");
 //        }

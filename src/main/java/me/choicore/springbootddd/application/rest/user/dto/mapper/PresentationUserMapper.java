@@ -1,14 +1,14 @@
-package me.choicore.springbootddd.interfaces.rest.user.dto.mapper;
+package me.choicore.springbootddd.application.rest.user.dto.mapper;
 
+import me.choicore.springbootddd.application.rest.constant.GenderType;
+import me.choicore.springbootddd.application.rest.user.dto.request.CreateUserRequest;
+import me.choicore.springbootddd.application.rest.user.dto.response.BirthDateResponse;
+import me.choicore.springbootddd.application.rest.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
-import me.choicore.springbootddd.interfaces.enums.GenderType;
-import me.choicore.springbootddd.interfaces.rest.user.dto.request.CreateUserRequest;
-import me.choicore.springbootddd.interfaces.rest.user.dto.response.BirthDateResponse;
-import me.choicore.springbootddd.interfaces.rest.user.dto.response.UserProfileResponse;
 import org.springframework.stereotype.Component;
 
 

@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.interfaces.rest.user.dto.response;
+package me.choicore.springbootddd.application.rest.user.dto.response;
 
 import lombok.Builder;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
@@ -76,7 +76,7 @@ public record BirthDateResponse(
         return DATE_OF_BIRTH;
     }
 
-    private void validate(int year, int month, int dayOfMonth) {
+    public void validate(int year, int month, int dayOfMonth) {
         try {
             DATE_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
         } catch (Exception e) {

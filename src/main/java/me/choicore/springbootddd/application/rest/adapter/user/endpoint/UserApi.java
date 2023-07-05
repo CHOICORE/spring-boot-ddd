@@ -1,12 +1,12 @@
-package me.choicore.springbootddd.application.rest.user.endpoint;
+package me.choicore.springbootddd.application.rest.adapter.user.endpoint;
 
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.choicore.springbootddd.application.rest.ApiResponse;
-import me.choicore.springbootddd.application.rest.user.dto.mapper.PresentationUserMapper;
-import me.choicore.springbootddd.application.rest.user.dto.request.CreateUserRequest;
-import me.choicore.springbootddd.application.rest.user.dto.response.UserProfileResponse;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.mapper.PresentationUserMapper;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.request.CreateUserRequest;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.domain.user.in.usecase.GetUserProfileQuery;
 import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 class UserApi {
 
     private final ModifyUserProfileUseCase modifyUserProfileUseCase;

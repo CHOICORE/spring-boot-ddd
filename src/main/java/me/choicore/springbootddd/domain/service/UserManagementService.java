@@ -3,20 +3,37 @@ package me.choicore.springbootddd.domain.service;
 import lombok.RequiredArgsConstructor;
 import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.command.ModifyProfile;
+import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
+import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
+import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
 
+import java.util.List;
 
-/**
- * <p>
- * 사용자 프로필 정보를 관리하기 위한 서비스 구현체.
- * </p>
- */
 
 @RequiredArgsConstructor
-public class ModifyUserProfileService {
+public class UserManagementService {
 
     private final ModifyUserPort modifyUserPort;
+
+    private final QueryUserPort queryUserPort;
+
+    public UserProfile getUserProfile(final Long userId) {
+        return queryUserPort.findById(userId);
+    }
+
+    public List<UserProfile> getUserProfiles(final QueryProfile userProfile) {
+        return queryUserPort.findByUserProfile(userProfile);
+    }
+
+    public List<UserProfile> getAllUserProfiles() {
+        return queryUserPort.findAll();
+    }
+
+    public boolean existsByUsername(final Username username) {
+        return queryUserPort.existsByUsername(username);
+    }
 
     public UserProfile createBy(final CreateProfile createUserProfile) {
         return modifyUserPort.createBy(createUserProfile);
@@ -30,4 +47,6 @@ public class ModifyUserProfileService {
     public UserProfile modifyUserProfile(final ModifyProfile modifyUserProfile) {
         return modifyUserPort.modifyBy(modifyUserProfile);
     }
+
+
 }

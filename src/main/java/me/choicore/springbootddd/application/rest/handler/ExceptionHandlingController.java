@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.application.handler;
+package me.choicore.springbootddd.application.rest.handler;
 
 
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package me.choicore.springbootddd.application.rest.user.dto.response;
+package me.choicore.springbootddd.application.rest.adapter.user.dto.response;
 
 import lombok.Builder;
 import me.choicore.springbootddd.application.rest.constant.GenderType;

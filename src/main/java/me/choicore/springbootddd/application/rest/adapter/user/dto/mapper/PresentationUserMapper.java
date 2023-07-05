@@ -1,9 +1,9 @@
-package me.choicore.springbootddd.application.rest.user.dto.mapper;
+package me.choicore.springbootddd.application.rest.adapter.user.dto.mapper;
 
+import me.choicore.springbootddd.application.rest.adapter.user.dto.request.CreateUserRequest;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.response.BirthDateResponse;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.application.rest.constant.GenderType;
-import me.choicore.springbootddd.application.rest.user.dto.request.CreateUserRequest;
-import me.choicore.springbootddd.application.rest.user.dto.response.BirthDateResponse;
-import me.choicore.springbootddd.application.rest.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;

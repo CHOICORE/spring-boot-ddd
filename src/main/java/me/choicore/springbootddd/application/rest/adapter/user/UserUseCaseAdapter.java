@@ -1,8 +1,7 @@
-package me.choicore.springbootddd.application.rest.adapter.driving;
+package me.choicore.springbootddd.application.rest.adapter.user;
 
 import lombok.RequiredArgsConstructor;
-import me.choicore.springbootddd.domain.service.ModifyUserProfileService;
-import me.choicore.springbootddd.domain.service.QueryUserProfileService;
+import me.choicore.springbootddd.domain.service.UserManagementService;
 import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.command.QueryProfile;
@@ -11,52 +10,56 @@ import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserUseCaseAdapter implements
         GetUserProfileQuery
         , ModifyUserProfileUseCase {
 
-    private final ModifyUserProfileService modifyUserProfileService;
+    private final UserManagementService userManagementService;
 
-    private final QueryUserProfileService queryUserProfileService;
 
-    @Override
     public UserProfile getUserProfile(final Long userId) {
-        return null;
+
+        return userManagementService.getUserProfile(userId);
+
     }
 
-    @Override
+
     public List<UserProfile> getUserProfiles(final QueryProfile userProfile) {
-        return null;
+        return userManagementService.getUserProfiles(userProfile);
     }
 
-    @Override
+
     public List<UserProfile> getAllUserProfiles() {
-        return null;
+        return userManagementService.getAllUserProfiles();
     }
 
-    @Override
     public boolean existsByUsername(final Username username) {
-        return false;
+        return userManagementService.existsByUsername(username);
     }
 
-    @Override
+    @Transactional
     public UserProfile createBy(final CreateProfile createUserProfile) {
-        return null;
+        return userManagementService.createBy(createUserProfile);
     }
 
-    @Override
-    public UserProfile modifyUserProfile(final ModifyProfile userProfile) {
-        return null;
-    }
-
-    @Override
+    @Transactional
     public void deleteById(final Long userId) {
+        userManagementService.deleteById(userId);
+    }
+
+    @Transactional
+    public UserProfile modifyUserProfile(final ModifyProfile modifyUserProfile) {
+        return userManagementService.modifyUserProfile(modifyUserProfile);
 
     }
 }
+
+

@@ -1,6 +1,6 @@
 package me.choicore.springbootddd.domain.user.out.persistence;
 
-import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
@@ -22,7 +22,7 @@ class ModifyPortTest {
     @DisplayName("중복된 사용자를 생성하면 IllegalStateException이 발생한다.")
     public void test_register_duplicate_user() {
         //given
-        CreateUserProfile user = new CreateUserProfile(
+        CreateProfile user = new CreateProfile(
                 "admin"
                 , "admin"
                 , Username.of("재형", "최")
@@ -31,7 +31,7 @@ class ModifyPortTest {
                 , new BirthDate(1993, 9, 22)
         );
 
-        CreateUserProfile duplicateUser = new CreateUserProfile(
+        CreateProfile duplicateUser = new CreateProfile(
                 "admin"
                 , "admin"
                 , Username.of("재형", "최")
@@ -56,7 +56,7 @@ class ModifyPortTest {
     @DisplayName("사용자를 생성한다.")
     public void test_create_user() {
         //given
-        CreateUserProfile user = new CreateUserProfile(
+        CreateProfile user = new CreateProfile(
                 "admin"
                 , "admin"
                 , Username.of("재형", "최")

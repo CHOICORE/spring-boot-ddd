@@ -1,8 +1,8 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
-import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
-import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
-import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyProfile;
+import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
@@ -35,7 +35,7 @@ public class UserManagementInMemoryAdapter implements
     }
 
     @Override
-    public List<UserProfile> findByUserProfile(final QueryUserProfile user) {
+    public List<UserProfile> findByUserProfile(final QueryProfile user) {
         return persistenceInMemoryUserMapper.fromEntities(userInMemoryDb.find(user));
 
     }
@@ -47,7 +47,7 @@ public class UserManagementInMemoryAdapter implements
 
 
     @Override
-    public UserProfile createBy(final CreateUserProfile user) {
+    public UserProfile createBy(final CreateProfile user) {
         if (existsByUsername(user.username().firstName(), user.username().lastName())) {
             throw new IllegalStateException("이미 존재하는 사용자입니다.");
         }
@@ -69,7 +69,7 @@ public class UserManagementInMemoryAdapter implements
     }
 
     @Override
-    public UserProfile modifyBy(final ModifyUserProfile user) {
+    public UserProfile modifyBy(final ModifyProfile user) {
         UserEntity userEntity = findUserById(user.userId());
         UserEntity modifedUserEntity = userEntity.changeNickname(user.nickname());
         return persistenceInMemoryUserMapper.fromEntity(modifedUserEntity);

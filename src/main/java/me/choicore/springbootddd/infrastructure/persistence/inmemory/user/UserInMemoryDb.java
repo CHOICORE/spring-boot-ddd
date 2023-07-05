@@ -1,6 +1,6 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user;
 
-import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.InMemoryDb;
 import org.springframework.stereotype.Repository;
@@ -31,7 +31,7 @@ public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
         return super.findById(userId);
     }
 
-    public List<UserEntity> find(final QueryUserProfile user) {
+    public List<UserEntity> find(final QueryProfile user) {
         return super.find(matches(user));
     }
 
@@ -84,7 +84,7 @@ public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
     }
 
 
-    private Predicate<UserEntity> matches(final QueryUserProfile user) {
+    private Predicate<UserEntity> matches(final QueryProfile user) {
         return userEntity ->
                 matchesId(user.userId()).test(userEntity)
                         || matchesUsername(user.username()).test(userEntity)

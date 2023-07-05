@@ -1,7 +1,7 @@
 package me.choicore.springbootddd.domain.user.out.persistence;
 
 
-import me.choicore.springbootddd.domain.user.command.QueryUserProfile;
+import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
@@ -42,17 +42,17 @@ class QueryUserPortTest {
     void find_by_attributes() {
 
         // given
-        QueryUserProfile queryByUsername = QueryUserProfile.builder()
-                                                           .username(Username.of("재형", "최"))
-                                                           .build();
+        QueryProfile queryByUsername = QueryProfile.builder()
+                                                   .username(Username.of("재형", "최"))
+                                                   .build();
 
-        QueryUserProfile queryByNickname = QueryUserProfile.builder()
-                                                           .nickname("choicore")
-                                                           .build();
+        QueryProfile queryByNickname = QueryProfile.builder()
+                                                   .nickname("choicore")
+                                                   .build();
 
-        QueryUserProfile queryByBirthYear = QueryUserProfile.builder()
-                                                            .birthYear(1993)
-                                                            .build();
+        QueryProfile queryByBirthYear = QueryProfile.builder()
+                                                    .birthYear(1993)
+                                                    .build();
 
         // when
         List<UserProfile> foundByUsername = queryUserPort.findByUserProfile(queryByUsername);

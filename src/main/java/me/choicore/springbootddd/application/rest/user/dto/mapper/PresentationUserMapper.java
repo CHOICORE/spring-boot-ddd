@@ -4,7 +4,7 @@ import me.choicore.springbootddd.application.rest.constant.GenderType;
 import me.choicore.springbootddd.application.rest.user.dto.request.CreateUserRequest;
 import me.choicore.springbootddd.application.rest.user.dto.response.BirthDateResponse;
 import me.choicore.springbootddd.application.rest.user.dto.response.UserProfileResponse;
-import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PresentationUserMapper {
 
-    public CreateUserProfile toDomain(final CreateUserRequest request) {
-        return new CreateUserProfile(
+    public CreateProfile toDomain(final CreateUserRequest request) {
+        return new CreateProfile(
                 request.email()
                 , request.password()
                 , Username.of(request.firstName(), request.lastName())

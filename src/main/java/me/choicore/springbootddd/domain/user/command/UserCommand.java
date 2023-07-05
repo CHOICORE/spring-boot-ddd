@@ -1,7 +1,6 @@
 package me.choicore.springbootddd.domain.user.command;
 
 public sealed interface UserCommand permits UserCommand.Create, UserCommand.Delete, UserCommand.Modify, UserCommand.Query {
-
     non-sealed interface Create extends UserCommand {
     }
 

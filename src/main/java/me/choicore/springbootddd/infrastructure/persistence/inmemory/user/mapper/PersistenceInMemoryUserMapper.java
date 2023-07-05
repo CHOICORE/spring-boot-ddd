@@ -1,7 +1,7 @@
 package me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper;
 
-import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
-import me.choicore.springbootddd.domain.user.command.ModifyUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateProfile;
+import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.model.BirthDate;
 import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
@@ -57,7 +57,7 @@ public class PersistenceInMemoryUserMapper {
 
     }
 
-    public UserEntity fromDomain(final CreateUserProfile domain) {
+    public UserEntity fromDomain(final CreateProfile domain) {
         return UserEntity.builder()
                          .email(domain.email())
                          .password(domain.password())
@@ -69,7 +69,7 @@ public class PersistenceInMemoryUserMapper {
                          .build();
     }
 
-    public UserEntity fromDomain(final ModifyUserProfile domain) {
+    public UserEntity fromDomain(final ModifyProfile domain) {
         LocalDateTime now = LocalDateTime.now();
         return UserEntity.builder()
                          .userId(domain.userId())

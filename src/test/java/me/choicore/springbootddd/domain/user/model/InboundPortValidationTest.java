@@ -1,6 +1,6 @@
 package me.choicore.springbootddd.domain.user.model;
 
-import me.choicore.springbootddd.domain.user.command.CreateUserProfile;
+import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -55,10 +55,10 @@ class InboundPortValidationTest {
                 () ->
                 {
                     // when
-                    CreateUserProfile.builder()
-                                     .username(null)
-                                     .nickname(null)
-                                     .build();
+                    CreateProfile.builder()
+                                 .username(null)
+                                 .nickname(null)
+                                 .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 
@@ -66,10 +66,10 @@ class InboundPortValidationTest {
         assertThatThrownBy(
                 () -> {
                     // when
-                    CreateUserProfile.builder()
-                                     .username(Username.of("", ""))
-                                     .nickname("")
-                                     .build();
+                    CreateProfile.builder()
+                                 .username(Username.of("", ""))
+                                 .nickname("")
+                                 .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 
@@ -78,7 +78,7 @@ class InboundPortValidationTest {
         assertThatThrownBy(
                 () -> {
                     // when
-                    new CreateUserProfile(
+                    new CreateProfile(
                             "admin"
                             , ""
                             , null
@@ -94,7 +94,7 @@ class InboundPortValidationTest {
         assertThatThrownBy(
                 () -> {
                     // when
-                    new CreateUserProfile(
+                    new CreateProfile(
                             "admin"
                             , ""
                             , null
@@ -107,7 +107,7 @@ class InboundPortValidationTest {
         ).isInstanceOf(IllegalArgumentException.class);
 
         // given & when
-        CreateUserProfile admin = new CreateUserProfile(
+        CreateProfile admin = new CreateProfile(
                 "admin"
                 , "admin"
                 , Username.of("재형", "최")

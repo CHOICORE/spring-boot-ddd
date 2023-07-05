@@ -19,7 +19,7 @@ import java.util.UUID;
  * @param gender    {@link Gender}
  * @param birthYear {@link int}
  */
-public record QueryUserProfile(
+public record QueryProfile(
         UUID uuid
         , Long userId
         , Username username
@@ -40,7 +40,7 @@ public record QueryUserProfile(
      * @param birthYear {@link int}
      */
     @Builder
-    public QueryUserProfile {
+    public QueryProfile {
         validate(
                 uuid
                 , userId

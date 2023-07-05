@@ -39,7 +39,6 @@ class UserApi {
         return ResponseEntity.ok(succeed);
     }
 
-
     @GetMapping("/api/v1/users/{userId}")
     public ResponseEntity<ApiResponse<UserProfileResponse>> getUserProfile(@PathVariable("userId") Long userId) {
         log.info("getUserProfile() is called with userId: {}", userId);

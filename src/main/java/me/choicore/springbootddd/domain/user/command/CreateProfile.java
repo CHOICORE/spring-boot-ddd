@@ -18,7 +18,7 @@ import me.choicore.springbootddd.domain.user.model.Username;
  * @param gender    {@link Gender}
  * @param birthDate {@link BirthDate}
  */
-public record CreateUserProfile(
+public record CreateProfile(
         String email
         , String password
         , Username username
@@ -38,7 +38,7 @@ public record CreateUserProfile(
      * @param birthDate {@link BirthDate}
      */
     @Builder
-    public CreateUserProfile {
+    public CreateProfile {
         validate(
                 email
                 , password

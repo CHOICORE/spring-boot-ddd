@@ -14,7 +14,7 @@ import static me.choicore.springbootddd.domain.user.command.UserCommand.Modify;
  * @param nickname {@link String}
  */
 @Builder
-public record ModifyUserProfile(
+public record ModifyProfile(
         Long userId
         , String password
         , String nickname
@@ -28,7 +28,7 @@ public record ModifyUserProfile(
      * @param nickname {@link String}
      */
     @Builder
-    public ModifyUserProfile {
+    public ModifyProfile {
         validate(nickname);
     }
 

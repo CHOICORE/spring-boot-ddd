@@ -4,6 +4,4 @@ public interface AuthenticationUseCase {
 
     void authenticateBy(final String identifier, final String password);
 
-    Credentials authenticateBy(String identifier, String password);
-
 }

@@ -1,27 +1,19 @@
 package me.choicore.springbootddd.domain.authentication.command;
 
+import me.choicore.springbootddd.domain.authentication.model.Identifier;
+
 public record AuthenticationCommand(
-        String email,
-        String phoneNumber,
+
+        Identifier identifier,
         String password
 ) {
     public AuthenticationCommand {
-        validate(email, phoneNumber, password);
+        validate(identifier, password);
     }
 
-    public String identifier() {
-        if (!this.email.contains("@")) return this.email;
-        return this.email.substring(0, this.email.indexOf("@"));
-    }
 
-    private void validate(final String email, final String mobile, final String password) {
-        if (email == null && mobile == null) {
-            throw new IllegalArgumentException("email or phoneNumber must not be null");
-        }
+    private void validate(final Identifier identifier, final String password) {
 
-        if (password == null || password.isBlank()) {
-            throw new IllegalArgumentException("password must not be null");
-        }
     }
 
 

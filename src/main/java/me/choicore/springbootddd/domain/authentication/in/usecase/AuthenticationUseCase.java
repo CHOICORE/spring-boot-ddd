@@ -7,6 +7,4 @@ public interface AuthenticationUseCase {
 
     Credentials authenticateBy(final AuthenticationCommand authenticationCommand);
 
-    Credentials authenticateBy(String identifier, String password);
-
 }

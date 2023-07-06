@@ -4,9 +4,9 @@ package me.choicore.springbootddd.application.rest.adapter.user.endpoint;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.choicore.springbootddd.application.rest.ApiResponse;
-import me.choicore.springbootddd.application.rest.adapter.user.dto.mapper.UserDtoMapper;
-import me.choicore.springbootddd.application.rest.adapter.user.dto.request.CreateUserRequestDto;
-import me.choicore.springbootddd.application.rest.adapter.user.dto.response.UserProfileResponseDto;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.mapper.PresentationUserMapper;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.request.CreateUserRequest;
+import me.choicore.springbootddd.application.rest.adapter.user.dto.response.UserProfileResponse;
 import me.choicore.springbootddd.domain.user.in.usecase.GetUserProfileQuery;
 import me.choicore.springbootddd.domain.user.in.usecase.ModifyUserProfileUseCase;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
@@ -24,46 +24,46 @@ class UserApi {
 
     private final ModifyUserProfileUseCase modifyUserProfileUseCase;
     private final GetUserProfileQuery getUserProfileQuery;
-    private final UserDtoMapper userDtoMapper;
+    private final PresentationUserMapper presentationUserMapper;
 
     @PostMapping("/api/v1/users")
-    public ResponseEntity<ApiResponse<UserProfileResponseDto>> registerUser(@RequestBody CreateUserRequestDto request) {
+    public ResponseEntity<ApiResponse<UserProfileResponse>> registerUser(@RequestBody CreateUserRequest request) {
         log.info("registerUser() is called with request: {}", request);
 
-        UserProfile createdUser = modifyUserProfileUseCase.createBy(userDtoMapper.toDomain(request));
+        UserProfile createdUser = modifyUserProfileUseCase.createBy(presentationUserMapper.toDomain(request));
 
-        UserProfileResponseDto userProfileResponseDto = userDtoMapper.fromDomain(createdUser);
+        UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(createdUser);
 
-        ApiResponse<UserProfileResponseDto> succeed = ApiResponse.succeed(userProfileResponseDto);
+        ApiResponse<UserProfileResponse> succeed = ApiResponse.succeed(userProfileResponse);
 
         return ResponseEntity.ok(succeed);
     }
 
     @GetMapping("/api/v1/users/{userId}")
-    public ResponseEntity<ApiResponse<UserProfileResponseDto>> getUserProfile(@PathVariable("userId") Long userId) {
+    public ResponseEntity<ApiResponse<UserProfileResponse>> getUserProfile(@PathVariable("userId") Long userId) {
         log.info("getUserProfile() is called with userId: {}", userId);
 
         UserProfile foundUserProfile = getUserProfileQuery.getUserProfile(userId);
 
-        UserProfileResponseDto userProfileResponseDto = userDtoMapper.fromDomain(foundUserProfile);
+        UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(foundUserProfile);
 
-        ApiResponse<UserProfileResponseDto> succeed = ApiResponse.succeed(userProfileResponseDto);
+        ApiResponse<UserProfileResponse> succeed = ApiResponse.succeed(userProfileResponse);
 
         return ResponseEntity.ok(succeed);
     }
 
     @GetMapping("/api/v1/users")
-    public ResponseEntity<ApiResponse<List<UserProfileResponseDto>>> getUserProfiles() {
+    public ResponseEntity<ApiResponse<List<UserProfileResponse>>> getUserProfiles() {
         log.info("getUserProfiles() is called");
 
         List<UserProfile> foundUserProfiles = getUserProfileQuery.getAllUserProfiles();
 
-        List<UserProfileResponseDto> collect = foundUserProfiles.stream().flatMap(userProfile -> {
-            UserProfileResponseDto userProfileResponseDto = userDtoMapper.fromDomain(userProfile);
-            return Stream.of(userProfileResponseDto);
+        List<UserProfileResponse> collect = foundUserProfiles.stream().flatMap(userProfile -> {
+            UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(userProfile);
+            return Stream.of(userProfileResponse);
         }).collect(Collectors.toList());
 
-        ApiResponse<List<UserProfileResponseDto>> succeed = ApiResponse.succeed(collect);
+        ApiResponse<List<UserProfileResponse>> succeed = ApiResponse.succeed(collect);
 
         return ResponseEntity.ok(succeed);
     }

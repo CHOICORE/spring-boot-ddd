@@ -2,7 +2,6 @@ package me.choicore.springbootddd.domain.authentication.out.persistence;
 
 import me.choicore.springbootddd.domain.authentication.model.Credentials;
 
-
 public interface CredentialsDrivenPort {
 
 

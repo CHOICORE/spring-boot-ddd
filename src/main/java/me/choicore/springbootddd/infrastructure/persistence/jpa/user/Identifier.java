@@ -13,5 +13,4 @@ import static lombok.AccessLevel.PROTECTED;
 public class Identifier {
     private String email;
     private String mobile;
-    private String password;
 }

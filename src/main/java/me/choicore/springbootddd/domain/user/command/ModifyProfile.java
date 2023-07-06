@@ -32,7 +32,7 @@ public record ModifyProfile(
         validate(nickname);
     }
 
-    public void validate(final String nickname) {
+    private void validate(final String nickname) {
         if (nickname == null || nickname.isBlank()) {
             throw new IllegalArgumentException("userId must not be null");
         }

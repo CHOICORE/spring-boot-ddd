@@ -51,7 +51,7 @@ public record QueryProfile(
         );
     }
 
-    public void validate(final UUID uuid, final Long userId, final Username username, final String nickname, final Gender gender, final int birthYear) {
+    private void validate(final UUID uuid, final Long userId, final Username username, final String nickname, final Gender gender, final int birthYear) {
 //        if (uuid == null) {
 //            throw new IllegalArgumentException("uuid must not be null");
 //        }

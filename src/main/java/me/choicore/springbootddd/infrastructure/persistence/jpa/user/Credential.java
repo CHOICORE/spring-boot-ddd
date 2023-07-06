@@ -17,6 +17,7 @@ public class Credential {
 
     @Embedded
     private Identifier identifier;
+    private String password;
     private int loginAttempts;
     private LocalDateTime lastLoggedInAt;
 

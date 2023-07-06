@@ -56,14 +56,12 @@ class UserApi {
     public ResponseEntity<ApiResponse<List<UserProfileResponse>>> getUserProfiles() {
         log.info("getUserProfiles() is called");
 
-
         List<UserProfile> foundUserProfiles = getUserProfileQuery.getAllUserProfiles();
 
         List<UserProfileResponse> collect = foundUserProfiles.stream().flatMap(userProfile -> {
             UserProfileResponse userProfileResponse = presentationUserMapper.fromDomain(userProfile);
             return Stream.of(userProfileResponse);
         }).collect(Collectors.toList());
-
 
         ApiResponse<List<UserProfileResponse>> succeed = ApiResponse.succeed(collect);
 

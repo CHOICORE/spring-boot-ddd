@@ -6,7 +6,7 @@ import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapterDrivenDriven;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,9 +14,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ModifyPortTest {
+class ModifyUserDrivenPortTest {
 
-    private final ModifyUserPort modifyUserPort = new UserManagementInMemoryAdapter(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
+    private final ModifyUserDrivenPort modifyUserDrivenPort = new UserManagementInMemoryAdapterDrivenDriven(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("중복된 사용자를 생성하면 IllegalStateException이 발생한다.")
@@ -44,8 +44,8 @@ class ModifyPortTest {
         assertThatThrownBy(
                 () -> {
                     // when
-                    modifyUserPort.createBy(user);
-                    modifyUserPort.createBy(duplicateUser);
+                    modifyUserDrivenPort.createBy(user);
+                    modifyUserDrivenPort.createBy(duplicateUser);
                 }
         ).isInstanceOf(IllegalStateException.class)
          .hasMessageMatching("이미 존재하는 사용자입니다.");
@@ -66,7 +66,7 @@ class ModifyPortTest {
         );
 
         // when
-        UserProfile createdUser = modifyUserPort.createBy(user);
+        UserProfile createdUser = modifyUserDrivenPort.createBy(user);
 
         // then
         assertThat(createdUser).isNotNull();

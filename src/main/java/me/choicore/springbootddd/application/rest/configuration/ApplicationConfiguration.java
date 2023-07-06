@@ -1,11 +1,12 @@
 package me.choicore.springbootddd.application.rest.configuration;
 
 
+import me.choicore.springbootddd.domain.service.AuthenticationService;
 import me.choicore.springbootddd.domain.service.ModifyUserProfileService;
 import me.choicore.springbootddd.domain.service.QueryUserProfileService;
 import me.choicore.springbootddd.domain.service.UserManagementService;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapterDrivenDriven;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,15 @@ public class ApplicationConfiguration {
                 userManagementInMemoryAdapter(), userManagementInMemoryAdapter()
         );
     }
+
+
+    @Bean
+    public AuthenticationService authenticationService() {
+        return new AuthenticationService(
+                null, null
+        );
+    }
+
 
     @Bean
     public ModifyUserProfileService modifyUserProfileService() {
@@ -34,8 +44,8 @@ public class ApplicationConfiguration {
         );
     }
 
-    private UserManagementInMemoryAdapter userManagementInMemoryAdapter() {
-        return new UserManagementInMemoryAdapter(
+    private UserManagementInMemoryAdapterDrivenDriven userManagementInMemoryAdapter() {
+        return new UserManagementInMemoryAdapterDrivenDriven(
                 new UserInMemoryDb(), new PersistenceInMemoryUserMapper()
         );
     }

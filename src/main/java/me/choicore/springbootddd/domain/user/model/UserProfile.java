@@ -57,7 +57,7 @@ public record UserProfile(
         );
     }
 
-    public void validate(final UUID uuid, final Long userId, final String email, final String password, final Username username, final String nickname, final Gender gender, final BirthDate birthDate) {
+    private void validate(final UUID uuid, final Long userId, final String email, final String password, final Username username, final String nickname, final Gender gender, final BirthDate birthDate) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid must not be null");
         }
@@ -83,4 +83,5 @@ public record UserProfile(
             throw new IllegalArgumentException("birthDate must not be null");
         }
     }
+
 }

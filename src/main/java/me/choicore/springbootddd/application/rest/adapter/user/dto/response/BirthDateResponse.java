@@ -76,7 +76,7 @@ public record BirthDateResponse(
         return DATE_OF_BIRTH;
     }
 
-    public void validate(int year, int month, int dayOfMonth) {
+    private void validate(int year, int month, int dayOfMonth) {
         try {
             DATE_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
         } catch (Exception e) {

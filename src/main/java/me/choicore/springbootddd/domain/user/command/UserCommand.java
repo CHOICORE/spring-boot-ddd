@@ -4,7 +4,6 @@ public sealed interface UserCommand permits UserCommand.Create, UserCommand.Dele
     non-sealed interface Create extends UserCommand {
     }
 
-
     non-sealed interface Query<T> extends UserCommand {
         T userId();
     }

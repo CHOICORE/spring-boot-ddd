@@ -6,8 +6,8 @@ import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
-import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
-import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
+import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserDrivenPort;
+import me.choicore.springbootddd.domain.user.out.persistence.QueryUserDrivenPort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,9 +15,9 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class UserManagementJpaAdapter implements
-        ModifyUserPort
-        , QueryUserPort {
+public class UserManagementJpaAdapterDrivenDriven implements
+        ModifyUserDrivenPort
+        , QueryUserDrivenPort {
     private final UserJpaRepository userJpaRepository;
     // private final PersistenceJpaUserMapper persistenceJpaUserMapper;
 

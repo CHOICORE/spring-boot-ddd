@@ -5,7 +5,7 @@ import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapterDrivenDriven;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,9 +14,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class QueryUserPortTest {
+class QueryUserDrivenPortTest {
 
-    private final QueryUserPort queryUserPort = new UserManagementInMemoryAdapter(UserInMemoryDb.testInstance(), new PersistenceInMemoryUserMapper());
+    private final QueryUserDrivenPort queryUserDrivenPort = new UserManagementInMemoryAdapterDrivenDriven(UserInMemoryDb.testInstance(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("ID로 사용자를 조회한다.")
@@ -26,7 +26,7 @@ class QueryUserPortTest {
         Long userId = 1L;
 
         // when
-        UserProfile userProfile = queryUserPort.findById(userId);
+        UserProfile userProfile = queryUserDrivenPort.findById(userId);
 
         // then
         assertThat(userProfile).isNotNull();
@@ -55,11 +55,11 @@ class QueryUserPortTest {
                                                     .build();
 
         // when
-        List<UserProfile> foundByUsername = queryUserPort.findByUserProfile(queryByUsername);
+        List<UserProfile> foundByUsername = queryUserDrivenPort.findByUserProfile(queryByUsername);
 
-        List<UserProfile> foundByNickname = queryUserPort.findByUserProfile(queryByNickname);
+        List<UserProfile> foundByNickname = queryUserDrivenPort.findByUserProfile(queryByNickname);
 
-        List<UserProfile> foundByBirthYear = queryUserPort.findByUserProfile(queryByBirthYear);
+        List<UserProfile> foundByBirthYear = queryUserDrivenPort.findByUserProfile(queryByBirthYear);
 
 
         // then

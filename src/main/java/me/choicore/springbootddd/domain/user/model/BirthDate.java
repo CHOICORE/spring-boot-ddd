@@ -62,7 +62,7 @@ public record BirthDate(
         return DATE_OF_BIRTH;
     }
 
-    public void validate(final int year, final int month, final int dayOfMonth) {
+    private void validate(final int year, final int month, final int dayOfMonth) {
         try {
             DATE_OF_BIRTH = LocalDate.of(year, month, dayOfMonth);
         } catch (Exception e) {

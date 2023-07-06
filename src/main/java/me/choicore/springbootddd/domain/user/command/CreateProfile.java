@@ -60,7 +60,7 @@ public record CreateProfile(
      * @param gender    {@link Gender}
      * @param birthDate {@link BirthDate}
      */
-    public void validate(
+    private void validate(
             final String email
             , final String password
             , final Username username
@@ -78,14 +78,14 @@ public record CreateProfile(
         }
 
         if (username == null) {
-            throw new IllegalArgumentException("username is null");
+            throw new IllegalArgumentException("email is null");
         }
-        // validate username
+        // validate email
         if (username.firstName() == null || username.firstName().isBlank()) {
-            throw new IllegalArgumentException("username.firstName is null or blank");
+            throw new IllegalArgumentException("email.firstName is null or blank");
         }
         if (username.lastName() == null || username.lastName().isBlank()) {
-            throw new IllegalArgumentException("username.lastName is null or blank");
+            throw new IllegalArgumentException("email.lastName is null or blank");
         }
 
         // validate nickname

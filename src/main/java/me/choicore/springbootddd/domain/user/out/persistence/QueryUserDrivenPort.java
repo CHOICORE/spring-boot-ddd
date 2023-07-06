@@ -6,7 +6,7 @@ import me.choicore.springbootddd.domain.user.model.Username;
 
 import java.util.List;
 
-public interface QueryUserPort {
+public interface QueryUserDrivenPort {
 
     UserProfile findById(final Long userId);
 

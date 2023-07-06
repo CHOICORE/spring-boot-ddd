@@ -17,7 +17,7 @@ import java.util.UUID;
  * @param firstName  {@link String}
  * @param lastName   {@link String}
  * @param nickname   {@link String}
- * @param mobile     {@link String}
+ * @param phoneNumber     {@link String}
  * @param gender     {@link Gender}
  * @param birthDate  {@link LocalDate}
  * @param createdAt  {@link LocalDateTime}

@@ -1,6 +1,7 @@
-package me.choicore.springbootddd.application.rest.adapter.user;
+package me.choicore.springbootddd.application.rest.adapter.user.usecase;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import me.choicore.springbootddd.domain.service.UserManagementService;
 import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.command.ModifyProfile;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
+@Slf4j
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -24,18 +26,13 @@ public class UserUseCaseAdapter implements
 
     private final UserManagementService userManagementService;
 
-
     public UserProfile getUserProfile(final Long userId) {
-
         return userManagementService.getUserProfile(userId);
-
     }
-
 
     public List<UserProfile> getUserProfiles(final QueryProfile userProfile) {
         return userManagementService.getUserProfiles(userProfile);
     }
-
 
     public List<UserProfile> getAllUserProfiles() {
         return userManagementService.getAllUserProfiles();
@@ -58,8 +55,8 @@ public class UserUseCaseAdapter implements
     @Transactional
     public UserProfile modifyUserProfile(final ModifyProfile modifyUserProfile) {
         return userManagementService.modifyUserProfile(modifyUserProfile);
-
     }
+
 }
 
 

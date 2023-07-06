@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.choicore.springbootddd.domain.user.command.CreateProfile;
 import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
-import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
+import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserDrivenPort;
 
 
 /**
@@ -16,18 +16,18 @@ import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
 @RequiredArgsConstructor
 public class ModifyUserProfileService {
 
-    private final ModifyUserPort modifyUserPort;
+    private final ModifyUserDrivenPort modifyUserDrivenPort;
 
     public UserProfile createBy(final CreateProfile createUserProfile) {
-        return modifyUserPort.createBy(createUserProfile);
+        return modifyUserDrivenPort.createBy(createUserProfile);
     }
 
     public void deleteById(final Long userId) {
-        modifyUserPort.deleteById(userId);
+        modifyUserDrivenPort.deleteById(userId);
     }
 
 
     public UserProfile modifyUserProfile(final ModifyProfile modifyUserProfile) {
-        return modifyUserPort.modifyBy(modifyUserProfile);
+        return modifyUserDrivenPort.modifyBy(modifyUserProfile);
     }
 }

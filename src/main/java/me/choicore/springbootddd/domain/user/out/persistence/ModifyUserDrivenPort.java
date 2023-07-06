@@ -5,7 +5,7 @@ import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 
 
-public interface ModifyUserPort {
+public interface ModifyUserDrivenPort {
 
     UserProfile modifyBy(final ModifyProfile user);
 

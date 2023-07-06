@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
-import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
+import me.choicore.springbootddd.domain.user.out.persistence.QueryUserDrivenPort;
 
 import java.util.List;
 
@@ -17,23 +17,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryUserProfileService {
 
-    private final QueryUserPort queryUserPort;
+    private final QueryUserDrivenPort queryUserDrivenPort;
 
 
     public UserProfile getUserProfile(final Long userId) {
-        return queryUserPort.findById(userId);
+        return queryUserDrivenPort.findById(userId);
     }
 
     public List<UserProfile> getUserProfiles(final QueryProfile userProfile) {
-        return queryUserPort.findByUserProfile(userProfile);
+        return queryUserDrivenPort.findByUserProfile(userProfile);
     }
 
 
     public List<UserProfile> getAllUserProfiles() {
-        return queryUserPort.findAll();
+        return queryUserDrivenPort.findAll();
     }
 
     public boolean existsByUsername(final Username username) {
-        return queryUserPort.existsByUsername(username);
+        return queryUserDrivenPort.existsByUsername(username);
     }
 }

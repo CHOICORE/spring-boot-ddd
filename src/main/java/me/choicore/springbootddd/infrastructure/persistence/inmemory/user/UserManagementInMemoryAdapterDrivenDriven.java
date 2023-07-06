@@ -5,8 +5,8 @@ import me.choicore.springbootddd.domain.user.command.ModifyProfile;
 import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
-import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserPort;
-import me.choicore.springbootddd.domain.user.out.persistence.QueryUserPort;
+import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserDrivenPort;
+import me.choicore.springbootddd.domain.user.out.persistence.QueryUserDrivenPort;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.springframework.stereotype.Repository;
 
@@ -16,15 +16,15 @@ import java.util.function.Predicate;
 
 
 @Repository
-public class UserManagementInMemoryAdapter implements
-        ModifyUserPort
-        , QueryUserPort {
+public class UserManagementInMemoryAdapterDrivenDriven implements
+        ModifyUserDrivenPort
+        , QueryUserDrivenPort {
 
     private final UserInMemoryDb userInMemoryDb;
 
     private final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper;
 
-    public UserManagementInMemoryAdapter(final UserInMemoryDb userInMemoryDb, final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper) {
+    public UserManagementInMemoryAdapterDrivenDriven(final UserInMemoryDb userInMemoryDb, final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper) {
         this.userInMemoryDb = userInMemoryDb;
         this.persistenceInMemoryUserMapper = persistenceInMemoryUserMapper;
     }

@@ -13,19 +13,19 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Embeddable
 @NoArgsConstructor(access = PROTECTED)
-public class UserProfile {
+public class UserProfileEntity {
 
     @Embedded
-    private Username username;
+    private UsernameEntity username;
 
     private String nickname;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 1)
-    private Gender gender;
+    private GenderEntity genderEntity;
 
     private LocalDate birthDate;
 
     @Embedded
-    private Address address;
+    private AddressEntity address;
 }

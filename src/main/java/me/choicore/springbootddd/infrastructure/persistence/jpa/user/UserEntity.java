@@ -14,7 +14,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 @Entity
 @Table(name = "TBL_USER")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +26,13 @@ public class User {
     private UUID uuid;
 
     @Embedded
-    private Credential credential;
+    private CredentialsEntity credentialsEntity;
 
     @Embedded
-    private UserProfile profile;
+    private UserProfileEntity profile;
 
     @Enumerated(EnumType.STRING)
-    private UserStatus userStatus;
+    private UserStatusEntity userStatusEntity;
 
     private LocalDateTime createdAt;
 

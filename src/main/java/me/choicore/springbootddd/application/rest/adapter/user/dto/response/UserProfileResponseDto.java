@@ -1,22 +1,22 @@
 package me.choicore.springbootddd.application.rest.adapter.user.dto.response;
 
 import lombok.Builder;
-import me.choicore.springbootddd.application.rest.constant.GenderType;
+import me.choicore.springbootddd.application.rest.constant.GenderDto;
 
 import java.util.UUID;
 
 
-public record UserProfileResponse(
+public record UserProfileResponseDto(
         UUID id
         , String email
         , String firstName
         , String lastName
         , String nickname
-        , GenderType gender
-        , BirthDateResponse birthDate) {
+        , GenderDto genderDto
+        , BirthDateResponseDto birthDate) {
 
     @Builder
-    public UserProfileResponse {
+    public UserProfileResponseDto {
     }
 
 }

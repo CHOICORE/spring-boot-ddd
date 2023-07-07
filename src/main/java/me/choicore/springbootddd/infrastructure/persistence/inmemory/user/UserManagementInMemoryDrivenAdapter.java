@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 
 
 @Repository
-public class UserManagementInMemoryAdapterDrivenDriven implements
+public class UserManagementInMemoryDrivenAdapter implements
         ModifyUserDrivenPort
         , QueryUserDrivenPort {
 
@@ -24,7 +24,7 @@ public class UserManagementInMemoryAdapterDrivenDriven implements
 
     private final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper;
 
-    public UserManagementInMemoryAdapterDrivenDriven(final UserInMemoryDb userInMemoryDb, final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper) {
+    public UserManagementInMemoryDrivenAdapter(final UserInMemoryDb userInMemoryDb, final PersistenceInMemoryUserMapper persistenceInMemoryUserMapper) {
         this.userInMemoryDb = userInMemoryDb;
         this.persistenceInMemoryUserMapper = persistenceInMemoryUserMapper;
     }

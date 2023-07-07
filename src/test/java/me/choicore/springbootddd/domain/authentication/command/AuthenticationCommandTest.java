@@ -10,14 +10,13 @@ class AuthenticationCommandTest {
     @DisplayName("이메일 주소에서 도메인을 제거한다.")
     void when_extract_local_part_then_removed_domain() throws Exception {
         // given
-        Identifier identifier = new Identifier("choicore@github.com", "01012341234", "1q2w3e4r!");
+        Identifier identifier = new Identifier("choicore@github.com", "01012341234");
 
         // when
-        String loginId = identifier.identifier();
-
+        String localPart = identifier.extractLocalPartFromEmailAddress();
 
         // then
-        Assertions.assertThat(loginId).isEqualTo("choicore");
+        Assertions.assertThat(localPart).isEqualTo("choicore");
 
     }
 

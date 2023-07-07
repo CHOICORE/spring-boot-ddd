@@ -1,22 +1,22 @@
 package me.choicore.springbootddd.application.rest.adapter.user.dto.request;
 
 import lombok.Builder;
-import me.choicore.springbootddd.application.rest.constant.GenderType;
+import me.choicore.springbootddd.application.rest.constant.GenderDto;
 
 import java.time.LocalDate;
 
 
-public record CreateUserRequest(
+public record CreateUserRequestDto(
         String email
         , String password
         , String firstName
         , String lastName
         , String nickname
-        , GenderType gender
+        , GenderDto genderDto
         , LocalDate birthDate
 ) {
     @Builder
-    public CreateUserRequest {
+    public CreateUserRequestDto {
     }
 
 }

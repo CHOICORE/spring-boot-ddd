@@ -13,24 +13,25 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static me.choicore.springbootddd.domain.user.model.Gender.FEMALE;
+import static me.choicore.springbootddd.domain.user.model.Gender.MALE;
+
 
 @Component
 public class PersistenceInMemoryUserMapper {
 
-    public Gender convertToGenderEntity(final UserEntity.Gender domain) {
-        if (domain == null) {
-            return null;
-        }
-
-        return Gender.of(domain.name());
+    public Gender toGenderDomain(final UserEntity.Gender genderEntity) {
+        return switch (genderEntity) {
+            case M -> MALE;
+            case F -> FEMALE;
+        };
     }
 
-    public UserEntity.Gender convertToGenderDomain(final Gender gender) {
-        if (gender == null) {
-            return null;
-        }
-
-        return UserEntity.Gender.valueOf(gender.code());
+    public UserEntity.Gender toGenderEntity(final Gender gender) {
+        return switch (gender) {
+            case MALE -> UserEntity.Gender.M;
+            case FEMALE -> UserEntity.Gender.F;
+        };
     }
 
     public UserProfile fromEntity(final UserEntity entity) {
@@ -42,7 +43,7 @@ public class PersistenceInMemoryUserMapper {
                 , entity.password()
                 , Username.of(entity.firstName(), entity.lastName())
                 , entity.nickname()
-                , convertToGenderEntity(entity.gender())
+                , toGenderDomain(entity.gender())
                 , BirthDate.of(entity.birthDate())
                 , entity.createdAt()
         );
@@ -64,7 +65,7 @@ public class PersistenceInMemoryUserMapper {
                          .firstName(domain.username().firstName())
                          .lastName(domain.username().lastName())
                          .nickname(domain.nickname())
-                         .gender(convertToGenderDomain(domain.gender()))
+                         .gender(toGenderEntity(domain.gender()))
                          .birthDate(domain.birthDate().dateOfBirth())
                          .build();
     }

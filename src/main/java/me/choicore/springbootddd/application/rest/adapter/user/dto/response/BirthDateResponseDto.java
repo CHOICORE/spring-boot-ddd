@@ -15,7 +15,7 @@ import java.time.LocalDate;
  * @param month      {@link int}
  * @param dayOfMonth {@link int}
  */
-public record BirthDateResponse(
+public record BirthDateResponseDto(
         int year
         , int month
         , int dayOfMonth
@@ -30,15 +30,15 @@ public record BirthDateResponse(
      * @param dayOfMonth {@link int}
      */
     @Builder
-    public BirthDateResponse {
+    public BirthDateResponseDto {
         validate(year, month, dayOfMonth);
     }
 
     /**
      * @param birthDate {@link LocalDate}
-     * @return {@link BirthDateResponse}
+     * @return {@link BirthDateResponseDto}
      */
-    public static BirthDateResponse of(LocalDate birthDate) {
+    public static BirthDateResponseDto of(LocalDate birthDate) {
         return of(
                 birthDate.getYear()
                 , birthDate.getMonthValue()
@@ -48,9 +48,9 @@ public record BirthDateResponse(
 
     /**
      * @param birthDate {@link String}
-     * @return {@link BirthDateResponse}
+     * @return {@link BirthDateResponseDto}
      */
-    public static BirthDateResponse of(BirthDate birthDate) {
+    public static BirthDateResponseDto of(BirthDate birthDate) {
         return of(
                 birthDate.year()
                 , birthDate.month()
@@ -62,10 +62,10 @@ public record BirthDateResponse(
      * @param year       {@link int}
      * @param month      {@link int}
      * @param dayOfMonth {@link int}
-     * @return {@link BirthDateResponse}
+     * @return {@link BirthDateResponseDto}
      */
-    public static BirthDateResponse of(int year, int month, int dayOfMonth) {
-        return new BirthDateResponse(year, month, dayOfMonth);
+    public static BirthDateResponseDto of(int year, int month, int dayOfMonth) {
+        return new BirthDateResponseDto(year, month, dayOfMonth);
     }
 
 

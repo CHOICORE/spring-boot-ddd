@@ -6,7 +6,7 @@ import me.choicore.springbootddd.domain.user.model.Gender;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryAdapterDrivenDriven;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryDrivenAdapter;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ModifyUserDrivenPortTest {
 
-    private final ModifyUserDrivenPort modifyUserDrivenPort = new UserManagementInMemoryAdapterDrivenDriven(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
+    private final ModifyUserDrivenPort modifyUserDrivenPort = new UserManagementInMemoryDrivenAdapter(new UserInMemoryDb(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("중복된 사용자를 생성하면 IllegalStateException이 발생한다.")

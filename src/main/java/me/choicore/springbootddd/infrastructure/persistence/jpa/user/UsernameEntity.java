@@ -10,7 +10,10 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @Embeddable
-public class Identifier {
-    private String email;
-    private String mobile;
+public class UsernameEntity {
+
+    private String firstName;
+
+    private String lastName;
+
 }

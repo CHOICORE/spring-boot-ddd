@@ -9,8 +9,13 @@ import java.util.Set;
  * user credential model.
  * </p>
  *
- * @param userId     {@link Long}
- * @param identifier {@link Identifier}
+ * @param userId                   {@link Long}
+ * @param identifier               {@link Identifier}
+ * @param loginAttempts            {@link Integer}
+ * @param passwordUpdateRequiredAt {@link LocalDate}
+ * @param lastLoggedInAt           {@link LocalDateTime}
+ * @param isActive                 {@link Boolean}
+ * @param roles                    {@link Set}
  */
 public record Credentials(
         Long userId
@@ -25,21 +30,12 @@ public record Credentials(
     /**
      * default constructor
      *
-     * @param userId     {@link Long}
-     * @param identifier {@link Identifier}
+     * @param userId {@link Long}
      */
     public Credentials {
-        validate(userId, identifier);
     }
 
-    private void validate(final Long userId, final Identifier identifier) {
-        if (userId == null) {
-            throw new IllegalArgumentException("userId must not be null");
-        }
-        if (identifier == null) {
-            throw new IllegalArgumentException("identifier must not be null");
-        }
-
+    private void validate() {
     }
 
 }

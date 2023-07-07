@@ -9,8 +9,12 @@ import java.util.Set;
  * user credential model.
  * </p>
  *
- * @param userId     {@link Long}
- * @param identifier {@link Identifier}
+ * @param userId                   {@link Long}
+ * @param identifier               {@link Identifier}
+ * @param loginAttempts            {@link Integer}
+ * @param passwordUpdateRequiredAt {@link LocalDate}
+ * @param lastLoggedInAt           {@link LocalDateTime}
+ * @param roles                    {@link Set}
  */
 public record Credentials(
         Long userId
@@ -18,28 +22,18 @@ public record Credentials(
         , int loginAttempts
         , LocalDate passwordUpdateRequiredAt
         , LocalDateTime lastLoggedInAt
-        , boolean isActive // 계정 활성화 여부 - 계정 활성화 상태를 위한 필드를 하나 만들 것인지, 검증을 하는 메서드로 처리할 것인지
         , Set<String> roles
 ) {
 
     /**
      * default constructor
      *
-     * @param userId     {@link Long}
-     * @param identifier {@link Identifier}
+     * @param userId {@link Long}
      */
     public Credentials {
-        validate(userId, identifier);
     }
 
-    private void validate(final Long userId, final Identifier identifier) {
-        if (userId == null) {
-            throw new IllegalArgumentException("userId must not be null");
-        }
-        if (identifier == null) {
-            throw new IllegalArgumentException("identifier must not be null");
-        }
-
+    private void validate() {
     }
 
 }

@@ -10,18 +10,18 @@ import java.util.UUID;
 /**
  * User entity for in-memory database.
  *
- * @param uuid       {@link UUID
- * @param userId     {@link Long}
- * @param email      {@link String}
- * @param password   {@link String}
- * @param firstName  {@link String}
- * @param lastName   {@link String}
- * @param nickname   {@link String}
- * @param phoneNumber     {@link String}
- * @param gender     {@link Gender}
- * @param birthDate  {@link LocalDate}
- * @param createdAt  {@link LocalDateTime}
- * @param modifiedAt {@link LocalDateTime}
+ * @param uuid        {@link UUID
+ * @param userId      {@link Long}
+ * @param email       {@link String}
+ * @param password    {@link String}
+ * @param firstName   {@link String}
+ * @param lastName    {@link String}
+ * @param nickname    {@link String}
+ * @param phoneNumber {@link String}
+ * @param gender      {@link Gender}
+ * @param birthDate   {@link LocalDate}
+ * @param createdAt   {@link LocalDateTime}
+ * @param modifiedAt  {@link LocalDateTime}
  */
 public record UserEntity(
         UUID uuid

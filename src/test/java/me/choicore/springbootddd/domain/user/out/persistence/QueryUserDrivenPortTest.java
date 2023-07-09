@@ -5,7 +5,7 @@ import me.choicore.springbootddd.domain.user.command.QueryProfile;
 import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.domain.user.model.Username;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDb;
-import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserManagementInMemoryDrivenAdapter;
+import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.UserInMemoryDrivenAdapter;
 import me.choicore.springbootddd.infrastructure.persistence.inmemory.user.mapper.PersistenceInMemoryUserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class QueryUserDrivenPortTest {
 
-    private final QueryUserDrivenPort queryUserDrivenPort = new UserManagementInMemoryDrivenAdapter(UserInMemoryDb.testInstance(), new PersistenceInMemoryUserMapper());
+    private final QueryUserDrivenPort queryUserDrivenPort = new UserInMemoryDrivenAdapter(UserInMemoryDb.testInstance(), new PersistenceInMemoryUserMapper());
 
     @Test
     @DisplayName("ID로 사용자를 조회한다.")

@@ -1,11 +1,11 @@
 package me.choicore.springbootddd.domain.authentication.in.usecase;
 
-import me.choicore.springbootddd.domain.authentication.command.LoginCommand;
-import me.choicore.springbootddd.domain.service.AuthToken;
+import me.choicore.springbootddd.domain.authentication.command.Identifier;
+import me.choicore.springbootddd.domain.authentication.model.Token;
 
 public interface AuthenticationUseCase {
 
-    AuthToken login(LoginCommand loginCommand);
+    Token login(Identifier identifier, String password);
 
     void logout(String token);
 }

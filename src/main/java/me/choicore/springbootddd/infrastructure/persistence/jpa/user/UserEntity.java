@@ -2,37 +2,37 @@ package me.choicore.springbootddd.infrastructure.persistence.jpa.user;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import static lombok.AccessLevel.PROTECTED;
 
 @Getter
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor(access = PROTECTED)
 @Entity
 @Table(name = "TBL_USER")
 public class UserEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     private Long id;
 
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(unique = true, nullable = false, updatable = false)
-    private UUID uuid;
-
     @Embedded
-    private CredentialsEntity credentialsEntity;
+    private CredentialsEntity credentials;
 
     @Embedded
     private UserProfileEntity profile;
 
     @Enumerated(EnumType.STRING)
-    private UserStatusEntity userStatusEntity;
+    private UserStatusEntity userStatus;
 
     private LocalDateTime createdAt;
 

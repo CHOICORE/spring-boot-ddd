@@ -2,6 +2,8 @@ package me.choicore.springbootddd.infrastructure.persistence.jpa.user;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +14,9 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Embeddable
+@Builder
 @NoArgsConstructor(access = PROTECTED)
+@AllArgsConstructor
 public class UserProfileEntity {
 
     @Embedded
@@ -21,8 +25,8 @@ public class UserProfileEntity {
     private String nickname;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 1)
-    private GenderEntity genderEntity;
+    @Column(length = 2)
+    private GenderEntity gender;
 
     private LocalDate birthDate;
 

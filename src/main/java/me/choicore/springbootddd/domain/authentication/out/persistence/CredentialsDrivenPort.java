@@ -1,9 +1,12 @@
 package me.choicore.springbootddd.domain.authentication.out.persistence;
 
-import me.choicore.springbootddd.domain.service.AuthToken;
+
+import me.choicore.springbootddd.domain.authentication.model.Token;
 
 public interface CredentialsDrivenPort {
 
 
-    AuthToken login(String identifier, String password);
+    Token login(String identifier, String password);
+
+    void logout(String token);
 }

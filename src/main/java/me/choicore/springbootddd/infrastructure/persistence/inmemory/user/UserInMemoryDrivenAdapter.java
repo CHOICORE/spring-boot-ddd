@@ -88,7 +88,8 @@ public class UserInMemoryDrivenAdapter implements
     }
 
     private UserEntity findUserById(final Long userId) {
-        return Optional.ofNullable(userInMemoryDb.findById(userId)).orElseThrow(() -> new IllegalStateException("존재하지 않는 사용자입니다."));
+        return
+                Optional.ofNullable(userInMemoryDb.findById(userId)).orElseThrow(() -> new IllegalStateException("존재하지 않는 사용자입니다."));
     }
 
 }

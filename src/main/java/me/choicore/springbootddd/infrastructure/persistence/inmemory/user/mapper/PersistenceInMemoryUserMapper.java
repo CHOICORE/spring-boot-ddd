@@ -51,32 +51,32 @@ public class PersistenceInMemoryUserMapper {
 
     public List<UserProfile> fromEntities(final List<UserEntity> entities) {
         return Optional.ofNullable(entities)
-                       .stream()
-                       .flatMap(List::stream)
-                       .map(this::fromEntity)
-                       .toList();
+                .stream()
+                .flatMap(List::stream)
+                .map(this::fromEntity)
+                .toList();
 
     }
 
     public UserEntity fromDomain(final CreateProfile domain) {
         return UserEntity.builder()
-                         .email(domain.email())
-                         .password(domain.password())
-                         .firstName(domain.username().firstName())
-                         .lastName(domain.username().lastName())
-                         .nickname(domain.nickname())
-                         .gender(toGenderEntity(domain.gender()))
-                         .birthDate(domain.birthDate().dateOfBirth())
-                         .build();
+                .email(domain.email())
+                .password(domain.password())
+                .firstName(domain.username().firstName())
+                .lastName(domain.username().lastName())
+                .nickname(domain.nickname())
+                .gender(toGenderEntity(domain.gender()))
+                .birthDate(domain.birthDate().dateOfBirth())
+                .build();
     }
 
     public UserEntity fromDomain(final ModifyProfile domain) {
         LocalDateTime now = LocalDateTime.now();
         return UserEntity.builder()
-                         .userId(domain.userId())
-                         .nickname(domain.nickname())
-                         .modifiedAt(now)
-                         .build();
+                .userId(domain.userId())
+                .nickname(domain.nickname())
+                .modifiedAt(now)
+                .build();
     }
 
 }

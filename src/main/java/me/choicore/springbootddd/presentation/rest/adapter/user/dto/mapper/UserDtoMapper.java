@@ -27,14 +27,14 @@ public class UserDtoMapper {
 
     public UserProfileResponseDto fromDomain(final UserProfile domain) {
         return UserProfileResponseDto.builder()
-                                     .id(domain.uuid())
-                                     .email(domain.email())
-                                     .firstName(domain.username().firstName())
-                                     .lastName(domain.username().lastName())
-                                     .nickname(domain.nickname())
-                                     .genderDto(GenderDto.valueOf(domain.gender().code()))
-                                     .birthDate(BirthDateResponseDto.of(domain.birthDate()))
-                                     .build();
+                .id(domain.uuid())
+                .email(domain.email())
+                .firstName(domain.username().firstName())
+                .lastName(domain.username().lastName())
+                .nickname(domain.nickname())
+                .genderDto(GenderDto.valueOf(domain.gender().code()))
+                .birthDate(BirthDateResponseDto.of(domain.birthDate()))
+                .build();
     }
 
 }

@@ -41,15 +41,15 @@ public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
             return super.save(entity);
         } else {
             UserEntity createUser = UserEntity.withGenerateUuid()
-                                              .userId(generateId())
-                                              .password(entity.password())
-                                              .email(entity.email())
-                                              .firstName(entity.firstName())
-                                              .lastName(entity.lastName())
-                                              .nickname(entity.nickname())
-                                              .gender(entity.gender())
-                                              .birthDate(entity.birthDate())
-                                              .build();
+                    .userId(generateId())
+                    .password(entity.password())
+                    .email(entity.email())
+                    .firstName(entity.firstName())
+                    .lastName(entity.lastName())
+                    .nickname(entity.nickname())
+                    .gender(entity.gender())
+                    .birthDate(entity.birthDate())
+                    .build();
             return super.save(createUser);
         }
     }
@@ -62,24 +62,24 @@ public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
     @Override
     public Long generateId() {
         return values().stream()
-                       .map(UserEntity::userId)
-                       .max(Long::compare)
-                       .orElse(0L) + 1;
+                .map(UserEntity::userId)
+                .max(Long::compare)
+                .orElse(0L) + 1;
     }
 
     private void testingMock() {
         UserEntity userEntity = UserEntity.withGenerateUuid()
-                                          .userId(generateId())
-                                          .email("admin")
-                                          .password("admin")
-                                          .firstName("재형")
-                                          .lastName("최")
-                                          .nickname("choicore")
-                                          .gender(UserEntity.Gender.M)
-                                          .birthDate(LocalDate.of(1993, 9, 22))
-                                          .createdAt(LocalDateTime.now())
-                                          .modifiedAt(null)
-                                          .build();
+                .userId(generateId())
+                .email("admin")
+                .password("admin")
+                .firstName("재형")
+                .lastName("최")
+                .nickname("choicore")
+                .gender(UserEntity.Gender.M)
+                .birthDate(LocalDate.of(1993, 9, 22))
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(null)
+                .build();
         super.save(userEntity);
     }
 
@@ -112,8 +112,8 @@ public class UserInMemoryDb extends InMemoryDb<UserEntity, Long> {
     private Predicate<UserEntity> matchesBirthYear(final int birthYear) {
         if (birthYear == 0) return userEntity -> false;
         return userEntity -> Optional.ofNullable(userEntity.birthDate())
-                                     .stream()
-                                     .anyMatch(birthDate -> birthDate.getYear() == birthYear);
+                .stream()
+                .anyMatch(birthDate -> birthDate.getYear() == birthYear);
     }
 
     private Predicate<UserEntity> matchesUsername(final Username username) {

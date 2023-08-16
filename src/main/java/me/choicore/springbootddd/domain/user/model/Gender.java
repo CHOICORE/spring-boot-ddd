@@ -20,9 +20,9 @@ public enum Gender {
 
     public static Gender of(final String code) {
         return Arrays.stream(values())
-                     .filter(gender -> gender.code().equals(code))
-                     .findFirst()
-                     .orElseThrow(() -> new IllegalArgumentException("Invalid Gender Code : " + code));
+                .filter(gender -> gender.code().equals(code))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Gender Code : " + code));
     }
 
     public String code() {

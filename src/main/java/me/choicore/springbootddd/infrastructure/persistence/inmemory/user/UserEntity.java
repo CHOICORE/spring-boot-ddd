@@ -51,9 +51,9 @@ public record UserEntity(
 
     public static UserEntityBuilder withGenerateUuid() {
         return UserEntity.builder()
-                         .uuid(UUID.randomUUID())
-                         .createdAt(LocalDateTime.now())
-                         .modifiedAt(null);
+                .uuid(UUID.randomUUID())
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(null);
     }
 
     @Override
@@ -63,18 +63,18 @@ public record UserEntity(
 
     public UserEntity changeNickname(final String nickname) {
         return UserEntity.builder()
-                         .uuid(this.uuid)
-                         .userId(this.userId)
-                         .email(this.email)
-                         .password(this.password)
-                         .firstName(this.firstName)
-                         .lastName(this.lastName)
-                         .nickname(nickname)
-                         .mobile(this.mobile)
-                         .gender(this.gender)
-                         .birthDate(this.birthDate)
-                         .createdAt(this.createdAt)
-                         .modifiedAt(LocalDateTime.now()).build();
+                .uuid(this.uuid)
+                .userId(this.userId)
+                .email(this.email)
+                .password(this.password)
+                .firstName(this.firstName)
+                .lastName(this.lastName)
+                .nickname(nickname)
+                .mobile(this.mobile)
+                .gender(this.gender)
+                .birthDate(this.birthDate)
+                .createdAt(this.createdAt)
+                .modifiedAt(LocalDateTime.now()).build();
     }
 
     public String fullName() {

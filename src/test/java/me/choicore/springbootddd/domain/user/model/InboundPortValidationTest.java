@@ -19,10 +19,10 @@ class InboundPortValidationTest {
                 {
                     // when
                     BirthDate.builder()
-                             .year(0)
-                             .month(0)
-                             .dayOfMonth(0)
-                             .build();
+                            .year(0)
+                            .month(0)
+                            .dayOfMonth(0)
+                            .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 
@@ -31,10 +31,10 @@ class InboundPortValidationTest {
                 () -> {
                     // when
                     BirthDate.builder()
-                             .year(2021)
-                             .month(0)
-                             .dayOfMonth(0)
-                             .build();
+                            .year(2021)
+                            .month(0)
+                            .dayOfMonth(0)
+                            .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 
@@ -56,9 +56,9 @@ class InboundPortValidationTest {
                 {
                     // when
                     CreateProfile.builder()
-                                 .username(null)
-                                 .nickname(null)
-                                 .build();
+                            .username(null)
+                            .nickname(null)
+                            .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 
@@ -67,9 +67,9 @@ class InboundPortValidationTest {
                 () -> {
                     // when
                     CreateProfile.builder()
-                                 .username(Username.of("", ""))
-                                 .nickname("")
-                                 .build();
+                            .username(Username.of("", ""))
+                            .nickname("")
+                            .build();
                 }
         ).isInstanceOf(IllegalArgumentException.class);
 

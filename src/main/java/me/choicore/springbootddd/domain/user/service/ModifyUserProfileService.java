@@ -13,7 +13,6 @@ import me.choicore.springbootddd.domain.user.out.persistence.ModifyUserDrivenPor
  * 사용자 프로필 정보를 관리하기 위한 서비스 구현체.
  * </p>
  */
-
 @RequiredArgsConstructor
 public class ModifyUserProfileService implements ModifyUserProfileUseCase {
 

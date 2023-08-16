@@ -43,16 +43,16 @@ class QueryUserDrivenPortTest {
 
         // given
         QueryProfile queryByUsername = QueryProfile.builder()
-                                                   .username(Username.of("재형", "최"))
-                                                   .build();
+                .username(Username.of("재형", "최"))
+                .build();
 
         QueryProfile queryByNickname = QueryProfile.builder()
-                                                   .nickname("choicore")
-                                                   .build();
+                .nickname("choicore")
+                .build();
 
         QueryProfile queryByBirthYear = QueryProfile.builder()
-                                                    .birthYear(1993)
-                                                    .build();
+                .birthYear(1993)
+                .build();
 
         // when
         List<UserProfile> foundByUsername = queryUserDrivenPort.findByUserProfile(queryByUsername);

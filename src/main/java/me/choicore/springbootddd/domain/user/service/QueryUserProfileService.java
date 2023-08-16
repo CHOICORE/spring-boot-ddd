@@ -20,6 +20,7 @@ public class QueryUserProfileService implements QueryUserProfileUseCase {
 
     private final QueryUserDrivenPort queryUserDrivenPort;
 
+
     public UserProfile getUserProfile(final Long userId) {
         return queryUserDrivenPort.findById(userId);
     }

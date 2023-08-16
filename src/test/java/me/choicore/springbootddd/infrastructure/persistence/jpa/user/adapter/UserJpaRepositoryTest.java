@@ -27,22 +27,22 @@ class UserJpaRepositoryTest {
     @BeforeEach
     void setUp() {
         UserEntity createUser = UserEntity.builder()
-                                          .credentials(CredentialsEntity.builder()
-                                                                        .identifier(new IdentifierEntity("choicore@github.com", "01012341234"))
-                                                                        .password("1q2w3e4r!")
-                                                                        .loginAttempts(0)
-                                                                        .lastLoggedInAt(null)
-                                                                        .build())
-                                          .profile(UserProfileEntity.builder()
-                                                                    .username(new UsernameEntity("Jae-hyeong", "Choi"))
-                                                                    .nickname("choicore")
-                                                                    .gender(GenderEntity.M)
-                                                                    .birthDate(LocalDate.of(1993, 9, 22))
-                                                                    .address(new AddressEntity("기본 주소", "상세 주소", "123-456"))
-                                                                    .build())
-                                          .userStatus(UserStatusEntity.ACTIVE)
-                                          .createdAt(LocalDateTime.now())
-                                          .build();
+                .credentials(CredentialsEntity.builder()
+                        .identifier(new IdentifierEntity("choicore@github.com", "01012341234"))
+                        .password("1q2w3e4r!")
+                        .loginAttempts(0)
+                        .lastLoggedInAt(null)
+                        .build())
+                .profile(UserProfileEntity.builder()
+                        .username(new UsernameEntity("Jae-hyeong", "Choi"))
+                        .nickname("choicore")
+                        .gender(GenderEntity.M)
+                        .birthDate(LocalDate.of(1993, 9, 22))
+                        .address(new AddressEntity("기본 주소", "상세 주소", "123-456"))
+                        .build())
+                .userStatus(UserStatusEntity.ACTIVE)
+                .createdAt(LocalDateTime.now())
+                .build();
         userJpaRepository.save(createUser);
     }
 
@@ -52,22 +52,22 @@ class UserJpaRepositoryTest {
 
         // given
         UserEntity createUser = UserEntity.builder()
-                                          .credentials(CredentialsEntity.builder()
-                                                                        .identifier(new IdentifierEntity("choicore@github.com", "01012341234"))
-                                                                        .password("1q2w3e4r!")
-                                                                        .loginAttempts(0)
-                                                                        .lastLoggedInAt(null)
-                                                                        .build())
-                                          .profile(UserProfileEntity.builder()
-                                                                    .username(new UsernameEntity("Jae-hyeong", "Choi"))
-                                                                    .nickname("choicore")
-                                                                    .gender(GenderEntity.M)
-                                                                    .birthDate(LocalDate.of(1993, 9, 22))
-                                                                    .address(new AddressEntity("기본 주소", "상세 주소", "123-456"))
-                                                                    .build())
-                                          .userStatus(UserStatusEntity.ACTIVE)
-                                          .createdAt(LocalDateTime.now())
-                                          .build();
+                .credentials(CredentialsEntity.builder()
+                        .identifier(new IdentifierEntity("choicore@github.com", "01012341234"))
+                        .password("1q2w3e4r!")
+                        .loginAttempts(0)
+                        .lastLoggedInAt(null)
+                        .build())
+                .profile(UserProfileEntity.builder()
+                        .username(new UsernameEntity("Jae-hyeong", "Choi"))
+                        .nickname("choicore")
+                        .gender(GenderEntity.M)
+                        .birthDate(LocalDate.of(1993, 9, 22))
+                        .address(new AddressEntity("기본 주소", "상세 주소", "123-456"))
+                        .build())
+                .userStatus(UserStatusEntity.ACTIVE)
+                .createdAt(LocalDateTime.now())
+                .build();
 
 
         // then

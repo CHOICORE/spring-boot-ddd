@@ -17,9 +17,9 @@ public record Username(
 
     public static Username of(final String firstName, final String lastName) {
         return Username.builder()
-                       .firstName(firstName)
-                       .lastName(lastName)
-                       .build();
+                .firstName(firstName)
+                .lastName(lastName)
+                .build();
     }
 
     private void validate(final String firstName, final String lastName) {

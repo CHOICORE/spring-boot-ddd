@@ -48,7 +48,7 @@ class ModifyUserDrivenPortTest {
                     modifyUserDrivenPort.createBy(duplicateUser);
                 }
         ).isInstanceOf(IllegalStateException.class)
-         .hasMessageMatching("이미 존재하는 사용자입니다.");
+                .hasMessageMatching("이미 존재하는 사용자입니다.");
 
     }
 

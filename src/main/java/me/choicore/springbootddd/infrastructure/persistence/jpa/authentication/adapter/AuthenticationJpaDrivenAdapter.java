@@ -20,7 +20,7 @@ public class AuthenticationJpaDrivenAdapter implements CredentialsDrivenPort {
     public Token login(final String identifier, final String password) {
 
         UserEntity foundUser = userJpaRepository.findByIdentifier(identifier, password)
-                                                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("User not found"));
         return null;
     }
 

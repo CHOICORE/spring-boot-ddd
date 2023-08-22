@@ -1,7 +1,6 @@
 package me.choicore.springbootddd.infrastructure.persistence.jpa.user.mapper;
 
 import me.choicore.springbootddd.domain.user.model.Gender;
-import me.choicore.springbootddd.domain.user.model.UserProfile;
 import me.choicore.springbootddd.infrastructure.persistence.jpa.user.GenderEntity;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +14,6 @@ import static me.choicore.springbootddd.infrastructure.persistence.jpa.user.Gend
 public sealed class PersistenceJpaUserMapper permits
         PersistenceJpaUserMapper.UserDomainToEntity
         , PersistenceJpaUserMapper.UserEntityToDomain {
-
-
-    private final UserProfile.UserProfileBuilder builder = UserProfile.builder();
 
     public Gender toGenderDomain(final GenderEntity genderEntity) {
         return switch (genderEntity) {

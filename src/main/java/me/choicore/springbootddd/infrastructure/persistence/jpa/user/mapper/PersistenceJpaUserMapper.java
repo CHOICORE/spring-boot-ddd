@@ -40,6 +40,4 @@ public sealed class PersistenceJpaUserMapper permits
     final static public class UserEntityToDomain extends PersistenceJpaUserMapper {
 
     }
-
-
 }
